@@ -1,0 +1,285 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            body{
+    margin: 0px;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
+}
+
+.video-title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.video-info-grid {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+.video-author, .video-stats {
+    color: rgb(128, 128, 128);
+}
+
+.channel-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.header{
+    height:55px;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.left-sec,.right-sec{
+    background-color:cornflowerblue;
+}
+.left-sec{
+    width: 150px;
+}
+.mid-sec{
+    background-color:aqua;
+    flex:1;
+    margin-left: 70px;
+    margin-right: 35px;
+    max-width: 500px;
+}
+.right-sec{
+    width:200px;
+}
+        </style>      
+        <title>YouTube.com Clone</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="left-sec">
+                <img src="~/App_Start/PC2/icons/youtube-logo.svg" />
+            </div>
+            <div class="mid-sec">
+                <input class="search-bar" type="text" placeholder="Search" />
+            </div>
+            <div class="right-sec">
+                Right
+            </div>
+
+        </div>
+        <div class="video-grid">
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img style="width: 100%;" src="~/App_Start/PC2/thumbnails/thumbnail-1.png" />
+                </div>
+                <div>
+                    <p class="video-title">
+                        Talking Tech and AI with Google CEO Sundar Pichai!
+                    </p>
+                </div>
+                <div class="video-info-grid">
+                    <div>
+                        <img class="channel-photo" src="~/App_Start/Playground/Resimler/ncfom.png" />
+                    </div>
+                    <div>
+                        <p class="video-author">Marques Brownlee</p>
+                        <p class="video-stats">3.4M views &#183; 6 months ago</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+       
+    </body>
+</html>

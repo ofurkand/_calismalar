@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Butonlar Sayfası</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+hr {
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+button {
+    height: 43px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    vertical-align: top;
+}
+
+.uber-button {
+    background-color: black;
+    color: white;
+    border: none;
+    width: 120px;
+    transition: opacity 0.2s;
+}
+
+    .uber-button:hover {
+        opacity: 0.7;
+    }
+
+.amazon-button {
+    background-color: rgb(255,216,20);
+    border: none;
+    border-radius: 60px;
+    width: 200px;
+    font-weight: 600;
+}
+
+    .amazon-button:hover {
+        background-color: rgb(235,196,0);
+    }
+
+    .amazon-button:active {
+        opacity: 0.6;
+    }
+
+.github-button {
+    background-color: rgb(46,164,79);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    width: 100px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: box-shadow 0.15s;
+}
+
+    .github-button:hover {
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    }
+
+.bootstrap-button-1 {
+    width: 120px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(121,82,179);
+    border-radius: 5px;
+    transition: background-color 0.1s;
+}
+
+    .bootstrap-button-1:hover {
+        background-color: rgb(101,62,159);
+    }
+
+.bootstrap-button-2 {
+    width: 113px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(108,117,125);
+    color: rgb(108,117,125);
+    font-weight: bold;
+    background-color: white;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+    .bootstrap-button-2:hover {
+        background-color: rgb(108,117,125);
+        color: white;
+    }
+
+.linkedin-button-1 {
+    background-color: rgb(10,102,194);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    width: 220px;
+    transition: background-color 0.15s;
+}
+
+    .linkedin-button-1:hover {
+        background-color: rgb(0,82,174);
+    }
+
+.linkedin-button-2 {
+    color: rgb(10,102,194);
+    background-color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    width: 80px;
+    font-size: 15px;
+    border-color: rgb(10,102,194);
+    border-style: solid;
+    border-width: 1px;
+    transition: background-color 0.15s, border-width 0.15s;
+}
+
+    .linkedin-button-2:hover {
+        background-color: rgb(185, 216, 243);
+        border-width: 2.4px;
+    }
+
+.f2-button-2 {
+    background-color: rgb(255,164,28);
+    border-radius: 50px;
+    border: none;
+    width: 105px;
+    font-weight: 600;
+    height: 28px;
+}
+
+    .f2-button-2:hover {
+        background-color: rgb(235,144,08);
+    }
+
+    .f2-button-2:active {
+        opacity: 0.6;
+    }
+
+.youtube-sub-button {
+    background-color: rgb(245,0,0);
+    border-color: rgb(245,0,0);
+    border-style: solid;
+    border-width: 1.5px;
+    padding-right: 16px;
+    padding-left: 16px;
+    color: white;
+    font-size: 15px;
+    border-radius: 3px;
+    transition: opacity 0.15s;
+}
+
+    .youtube-sub-button:hover {
+        opacity: 0.7;
+    }
+
+    .youtube-sub-button:active {
+        opacity: 0.4;
+    }
+
+.youtube-join-button {
+    background-color: white;
+    border-color: rgb(41,118,211);
+    padding-right: 16px;
+    padding-left: 16px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    font-size: 15px;
+    color: rgb(41,118,211);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .youtube-join-button:hover {
+        background-color: rgb(41,118,211);
+        color: white;
+    }
+
+    .youtube-join-button:active {
+        opacity: 0.7;
+    }
+
+.youtube-aboneol-button {
+    height: 38px;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    font-weight: 600;
+    width: 85px;
+}
+
+    .youtube-aboneol-button:hover {
+        opacity: 0.85;
+    }
+
+.tweet-button {
+    border: none;
+    background-color: rgb(29, 155, 240);
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 17px;
+    width: 85px;
+    height: 41px;
+    transition: box-shadow 0.15s;
+    padding-top: 5px;
+}
+
+    .tweet-button:hover {
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.15);
+    }
+
+.amazon-link {
+    color: rgb(0, 113, 113);
+}
+
+    .amazon-link:hover {
+        color: rgb(200,0,0);
+    }
+
+.stretch-button {
+    background-color: forestgreen;
+    border: none;
+    width: 100px;
+    font-size: larger;
+    color: white;
+    transition: width 1.75s, height 1.25s;
+}
+
+    .stretch-button:hover {
+        width: 200px;
+        height: 86px;
+    }
+
+.shadow-button {
+    background-color: forestgreen;
+    border: none;
+    font-size: larger;
+    color: white;
+    transition: margin-top 0.05s, margin-left 0.05s, margin-right 0.05s, box-shadow 0.05s;
+    margin-top: -5px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,1)
+}
+
+    .shadow-button:active {
+        margin-top: 0px;
+        margin-left: 5px;
+        box-shadow: none;
+        margin-right: 5px; /* stretch-buttons margin-left değerine eşitlenmesi için */
+    }
+
+.stretch-buttons {
+    background-color: forestgreen;
+    border: none;
+    font-size: larger;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    transition: margin-left 0.15s, margin-right 0.15s, padding-right 0.15s, padding-left 0.15s;
+}
+
+    .stretch-buttons:hover {
+        margin-left: 1px;
+        margin-right: 1px;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+.akademik-button {
+    background-color: rgb(102,102,102);
+    border: 1px solid rgb(68,68,68);
+    border-radius: 4px;
+    color: white;
+    height: 40px;
+    font-family: 'Ubuntu', sans-serif; /* Import edilmesi gerekiyor. */
+    padding-right: 9px;
+    padding-left: 9px;
+    font-weight: 300; /* Import edilmesi gerekiyor. */
+    transition: background-color 0.4s, box-shadow 0.2s;
+    font-size: 17px;
+    margin-right: 5px;
+    margin-bottom: 9px;
+}
+.akademik-button:hover{
+    background-color: rgb(0,202,212);
+}
+.akademik-button:active{
+    background-color: rgb(0,202,212);
+    box-shadow: 0px 0px 0px 4px rgba(13,110,253,0.25);
+}
+    </style>
+</head>
+<body>
+    <div>
+        <button class="uber-button">
+            Request now
+        </button>
+        <button class="amazon-button">
+            Add to Cart
+        </button>
+        <button class="github-button">
+            Sign up
+        </button>
+        <button class="bootstrap-button-1">
+            Get started
+        </button>
+        <button class="bootstrap-button-2">
+            Download
+        </button>
+        <button class="linkedin-button-1">
+            Apply on company website
+        </button>
+        <button class="linkedin-button-2">
+            Save
+        </button>
+    </div>
+    <hr />
+    <div>
+        <a href="https://youtu.be/G3e-cpL7ofc?t=4711" class="amazon-link">Back to Amazon</a>
+        <br />
+        <h2 style="font-weight:bolder">Nike Black Running Shoes</h2>
+        <a style="color:rgb(0,118,0); font-weight:bold;">$39 - in stock.</a>
+        <br /><br />
+        Free delivery tomorrow.
+        <br /><br />
+        <button class="amazon-button" style="width: 105px; height: 28px;">
+            Add to Cart
+        </button>
+        <button class="f2-button-2">
+            Buy now
+        </button>
+    </div>
+    <hr />
+    <div>
+        <button class="youtube-sub-button">
+            SUBSCRIBE
+        </button>
+        <button class="youtube-join-button">
+            JOIN
+        </button>
+        <button class="tweet-button">
+            Tweet
+        </button>
+        <button class="youtube-aboneol-button">
+            Abone ol
+        </button>
+    </div>
+    <hr />
+    <div>
+        <button class="stretch-button">
+            Stretch
+        </button>
+        <button class="shadow-button">
+            Shadow
+        </button>
+        <button class="stretch-buttons">
+            One
+        </button>
+        <button class="stretch-buttons">
+            Two
+        </button>
+        <button class="stretch-buttons">
+            Three
+        </button>
+    </div>
+    <hr />
+    <div>
+        @{string[] temp_Butonlar = {"Makaleler","Bildiriler","Kitaplar","Araştırma Projeleri",
+                "Patent","Editörlük","Hakemlik","Ödül","Yönetien Tezler","Diğer Bilimsel Faaliyetler"};
+            foreach (var item in temp_Butonlar)
+            {
+                <button class="akademik-button">
+                    @item.ToUpper()
+                </button>
+            }
+        }
+    </div>
+    <hr style="margin-top: 15px;"/>
+</body>
+</html>
