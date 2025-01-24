@@ -1,0 +1,56 @@
+{
+    "kahramanlar":{
+        "0":{
+            "tkmID":2,
+            "kmlkID": 0,
+            "Ad": "The Arkham Knight",
+            "Deger": 310000
+        },
+        "1":{
+            "tkmID": null,
+            "kmlkID": 2,
+            "Ad": "Static",
+            "Deger": 241000
+        },
+        "2":{
+            "tkmID": [1,2],
+            "kmlkID":1,
+            "Ad": "Harley Quinn",
+            "Deger": 285000
+        },
+        "3":{
+            "tkmID":[1,3],
+            "kmlkID":3,
+            "Ad": "Batman",
+            "Deger": 375000
+        }
+    },
+    "kimlikler":{
+        "0":{
+            "Ad": "The Arkham Knight"
+        },
+        "1":{
+            "Ad": "Harley Quinn"
+        },
+        "2":{
+            "Ad": "Static"
+        },
+        "3":{
+            "Ad": "Batman"
+        }
+    },
+    "takimlar":{
+        "0":{
+            "Ad":"Prime"
+        },
+        "1":{
+            "Ad": "Arkham"
+        },
+        "2":{
+            "Ad": "Arkham Knight"
+        },
+        "3":{
+            "Ad": "Arkham Origins"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "ID":1,
+        "tkmID":2,
+        "kmlkID": [1,2],
+        "Ad": "The Arkham Knight",
+        "Deger": 310000
+    },
+    {
+        "ID":2,
+        "tkmID": null,
+        "kmlkID": 3,
+        "Ad": "Static",
+        "Deger": 241000
+    },
+    {
+        "ID":3,
+        "tkmID": [1,2],
+        "kmlkID":2,
+        "Ad": "Harley Quinn",
+        "Deger": 285000
+    },
+    {
+        "ID":4,
+        "tkmID":[1,3],
+        "kmlkID":4,
+        "Ad": "Batman",
+        "Deger": 375000
+    }
+]

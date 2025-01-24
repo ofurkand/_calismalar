@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="desenler/flex.css">
+    <title>Flex Denemeleri</title>
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <img src="resimler/bjk.png"/>
+        <img style="width: 200px; height: 200px; object-fit: cover; object-position: center; vertical-align: top;"src="resimler/bjk.png" />
+        <img style="width:150px; height:150px; object-fit:cover; object-position: center; border-radius:90px;"src="resimler/bjk.png" />
+    </div>
+    <hr />
+    <div>
+        <input class="local-input" type="text" placeholder="Search" style=" margin-right: 20px; margin-bottom:5px; width: 200px; border: 1px solid lightgray; border-radius: 8px; outline: none;" />
+        <input class="local-input url-kisimarama-input" style="margin-top:5px;" type="text" placeholder="Search Google or type a URL" />
+    </div>
+    <hr>
+    <div>
+        Email<br />
+        <input class="local-input" style="margin-top:5px; padding-top: 5px; padding-bottom: 5px; width:353px;" type="email" /><br />
+        <br />By clicking Agree &amp; Join, you agree to the Privacy Policy.<br />
+        <br /><button class="agreed-button">Agree &amp; Join</button>
+    </div>
+    <hr />
+    <div style="text-align:right;">
+        <img style="width:50px; vertical-align:middle; margin-right: 5px; height:50px; object-fit:cover; object-position: center; border-radius:90px;" src="resimler/bjk.png" />
+        <input class="tweet-input" style=" vertical-align: middle; margin-bottom: 5px;" placeholder="What's happening?" />
+        <button class="tweet-button" style=" vertical-align: middle; margin-bottom: 5px;" >Tweet</button>
+    </div>
+    <hr />
+    <div>
+        <input class=" textbox-a8" type="text" placeholder="Name" style=" margin-bottom:5px;"/>
+        <input class="textbox-a8" type="email" placeholder="Email" />
+    </div>
+    <hr />
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+    <hr/>
+    <div>
+        <p style="display:inline-block;margin-top:0px;margin-bottom:0px;vertical-align:middle;width:200px;">Thanks for chatting with our customer support. Would you like to take our quick survey?</p>
+        <button style="vertical-align:middle; margin-right:3px;">Yes</button><button style="vertical-align:middle;">No</button>
+    </div>
+    <hr />
+    <div>
+        <img src="resimler/google-logo.png" style="display:block; margin-left: 150px;margin-bottom: 10px; cursor: pointer;"/>
+        <input type="text" class="url-kisimarama-input local-input" style="font-size: 16px" placeholder="Search Google or type a URL" />
+    </div>
+    <hr />
+    <div style="display: flex;gap: 50px;">
+        <div>
+            <input class="local-input kayit-textbox" style="width:150px;margin-right:3px;margin-bottom: 10px;" placeholder="First name" type="text" /><input class="local-input kayit-textbox" style="width:150px;" placeholder="Last name" type="text" /><br />
+            <input class="local-input kayit-textbox" style="width:322px;margin-bottom: 10px;" placeholder="Email" type="email" /><br />
+            <button class="signup-button" style=" width: 340px;">Sign Up</button>
+        </div>
+        <div style="max-width: 340px; height: 150px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="width: 100%; display: flex; flex-direction: row; gap: 5px;flex-grow: 1; ">
+                <input type="text" placeholder="Ad"class="local-input kayit-textbox" style="flex: 1; min-width: 0; outline: none;">
+                <input type="text" placeholder="Soyad"class="local-input kayit-textbox" style="flex:1; min-width: 0; outline: none;">
+            </div>
+            <input type="text" class="kayit-textbox local-input" placeholder="E-mail" style="flex:1; outline: none;">
+            <button class="signup-button" style="flex:1;">Kaydol</button>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <p style="font-size: 40px; font-weight: 500; margin-bottom:20px;margin-top:0px;">Request a ride now</p>
+        <input class="local-input uber-textbox" style="margin-bottom: 5px;" type="text" placeholder="Enter pickup location" /><br />
+        <input class="local-input uber-textbox" type="text" placeholder="Enter destination" /><br />
+        <button class="uber-button" style="margin-top: 40px; background-color: black; color: white;margin-right:15px; text-align:center;">Request Now</button>
+        <button class="uber-button2" style="font-weight:500">Schedule for later</button>
+    </div>
+    <hr />
+
+    <hr/>
+</body>
+</html>
