@@ -1,0 +1,29 @@
+{
+    "sinemalar":
+    {
+        "0":
+        {
+            "Ad":"Bilmem Ne"
+        },
+        "1":
+        {
+            "Ad":"Yıldızlar-arası"
+        }
+    },
+    "salonlar":
+    {
+        "Salon ST":
+        {
+            "genelBakis": 
+            {
+                "x": 8,
+                "y": 5
+            },
+            "yolAyrimNoktalari": 
+            [
+                [2.5,true],
+                [6.5,true]
+            ]
+        }
+    }
+}
