@@ -3,11 +3,18 @@
     {
         "0":
         {
-            "Ad":"Bilmem Ne"
+            "ad":"Oppenheimer",
+            "gosterimdeMi": true
         },
         "1":
         {
-            "Ad":"Yıldızlar-arası"
+            "ad":"Yıldızlararası",
+            "gosterimdeMi": true
+        },
+        "2":
+        {
+            "ad":"Esaretin Bedeli",
+            "gosterimdeMi": true
         }
     },
     "salonlar":
@@ -16,14 +23,16 @@
         {
             "genelBakis": 
             {
-                "x": 8,
+                "x": 9,
                 "y": 5
             },
             "yolAyrimNoktalari": 
-            [
-                [2.5,true],
-                [6.5,true]
-            ]
+            {
+                "x":[
+                    
+                ],
+                "y":[2.5,7.5]
+            }
         }
     }
 }

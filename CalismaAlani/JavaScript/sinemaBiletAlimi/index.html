@@ -9,16 +9,52 @@
 <body>
     <main>
         <div class="sahne"></div>
-        <div class="sira">
+        <div id="alan">
+            <!-- Örnek salon düzeni 
+            <div class="sira">
             <div class="koltuk"></div>
             <div class="koltuk"></div>
+            <div class="koridor"></div>
             <div class="koltuk dolu"></div>
             <div class="koltuk dolu"></div>
             <div class="koltuk"></div>
-            <div class="koltuk"></div>
+            <div class="koltuk secili"></div>
+            <div class="koridor"></div>
             <div class="koltuk"></div>
             <div class="koltuk"></div>
         </div>
+        <div class="sira">
+            <div class="koltuk"></div>
+            <div class="koltuk"></div>
+            <div class="koridor"></div>
+            <div class="koltuk dolu"></div>
+            <div class="koltuk dolu"></div>
+            <div class="koltuk"></div>
+            <div class="koltuk secili"></div>
+            <div class="koridor"></div>
+            <div class="koltuk"></div>
+            <div class="koltuk"></div> -->
+        </div>
+        <footer>
+            <div>
+                <select id="salonlar" disabled>
+
+                </select>
+                <select id="filmler">
+                    <option disabled>Film Seçiniz</option>
+                </select>
+            </div>
+            <div>
+                <ul class="renkBilgi">
+                    <li><div class="koltuk secili"></div><small>Seçili</small></li>
+                    <li><div class="koltuk"></div><small>Boş</small></li>
+                    <li><div class="koltuk dolu"></div><small>Dolu</small></li>
+                </li>
+            </div>
+            <div>
+                <p id="mesaj"></p>
+            </div>
+        </footer>
     </main>
     <script src="script.js"></script>
 </body>
