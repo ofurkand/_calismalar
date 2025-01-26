@@ -145,7 +145,7 @@ async function veriislem (islem="kurulum",veri=0)
             let _koridorTaslak = dataobj.salonlar[salonIsmi].yolAyrimNoktalari;
             // main.appendChild(alan);
             for (let _x = 1; _x < _koltukTaslak.y+1; _x++) {
-                eklenecekSira = document.createElement("div")
+                eklenecekSira = document.createElement("div");
                 eklenecekSira.classList.add("sira");
                 for (let _y = 1; _y < _koltukTaslak.x+1; _y++) {
                     eklenecekOge = document.createElement("div");
@@ -161,15 +161,20 @@ async function veriislem (islem="kurulum",veri=0)
                         };
                     })
                     };
-                _koridorTaslak.x.forEach(element => {
-                    if (_x<element && element<_x+1){
-                        eklenecekOge = document.createElement("div");
-                            eklenecekOge.classList.add("koridor");
-                            eklenecekSira.appendChild(eklenecekOge);
-                    };
-                });
                 // console.log(eklenecekSira);
                 alan.appendChild(eklenecekSira);
+                _koridorTaslak.x.forEach(element => {
+                    if (_x<element && element<_x+1){
+                        eklenecekSira = document.createElement("div");
+                        eklenecekSira.classList.add("sira");
+                        for (let _y = 1; _y < _koltukTaslak.x+1; _y++) {
+                            eklenecekOge = document.createElement("div");
+                            eklenecekOge.classList.add("koridor");
+                            eklenecekSira.appendChild(eklenecekOge);
+                        }
+                        alan.appendChild(eklenecekSira);
+                    };
+                });
             }
             
             // Sinemaların eklenmesi için ayrı bir alan
@@ -208,4 +213,4 @@ async function veriislem (islem="kurulum",veri=0)
     }
 }
 
-veriislem();
+veriislem("kurulum",0);

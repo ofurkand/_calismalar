@@ -16,4 +16,14 @@
 //   console.log(myData); 
 // });
 
-const kaynakURL = '../KartGosterimi/varliklar/veriler/ana_veriler.json'; 
+const kaynakURL = 'varliklar/veriler/ana_veriler.json'; 
+const yaz = (yazi) => console.log(yazi);
+
+async function veriislem (islem="kurulum",veri=0) 
+{
+    let response = await fetch(kaynakURL);
+    let dataobj = await response.json();
+    yaz(dataobj);
+}
+
+veriislem();
