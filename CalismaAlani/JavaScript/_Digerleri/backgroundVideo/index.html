@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background Video</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <video autoplay loop plays-inline class="back-video">
+      <!-- muted -->
+        <source src="assets/video.mp4" />
+      </video>
+
+      <section class="content", style="cursor:default;">
+        <h1 id="baslik" style="opacity: 0; transition: opacity 5s ease-in-out;">InFAMOUS 2</h1>
+        <a href="" id="bir" style="opacity: 0;transition: opacity 2s ease-in-out;">İncele</a>
+      </section>
+    </section>
+    <script type="text/javascript">
+        setTimeout(function()
+        {
+        document.getElementById("baslik").style.opacity = 1;
+        setTimeout(function(){
+          document.getElementById("baslik").style.transition = 0.5;
+        },1000);
+        },
+        15000);
+        setTimeout(function()
+        {
+        document.getElementById("bir").style.opacity = 1
+        document.getElementById("bir").style.cursor = "pointer";
+        },
+        19000);
+    </script>
+  </body>
+</html>

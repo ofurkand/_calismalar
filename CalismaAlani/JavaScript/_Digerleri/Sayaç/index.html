@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayaç</title>
+    <style>
+        #cLabel{
+            display: block;
+            text-align: center;
+            font-size: 10em;
+            font-family: Helvetica;
+        }
+        .btnContainer{
+            text-align: center;
+        }
+        .button{
+            padding: 10px 20px;
+            font-size: 1.5em;
+            color: white;
+            background-color: lightblue;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.25s;
+        }
+        .button:hover{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <label id="cLabel"></label><br>
+    <div class="btnContainer"></div>
+        <button id="dBtn" class="button">Decrease</button>
+        <button id="rBtn" class="button">Reset</button>
+        <button id="iBtn" class="button">Increase</button>
+    </div>
+
+    <script type="text/javascript">
+        const dBtn = document.getElementById("dBtn");
+        const rBtn = document.getElementById("rBtn");
+        const iBtn = document.getElementById("iBtn");
+        const cLabel = document.getElementById("cLabel");
+        let count = 0;
+        cLabel.textContent = count;
+
+        iBtn.onclick = function(){
+            count++;sayim();
+        }
+        dBtn.onclick =function(){
+            count--;sayim();
+        }
+        rBtn.onclick=function(){
+            count=0; sayim();
+        }
+        function sayim(){
+            cLabel.textContent = count;
+        }
+    </script>
+</body>
+</html>
+
+<!--
+Kaynaklar:
+I - https://youtu.be/uSJXZ3LkABE
+-->

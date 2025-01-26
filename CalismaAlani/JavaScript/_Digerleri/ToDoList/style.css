@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width:100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg,#000000,#e4fd00);
+    padding:10px;
+}
+.todo-app{
+    width:50%;
+    max-width:60%;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: lightgray;
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 25px;
+}
+input{
+    flex:1;
+    border:none;
+    outline: none; /**/
+    background: transparent;
+    padding: 10px;
+    font-weight: 20px;
+}
+button{
+    
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+}
+
+ul li::before{
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+}

@@ -94,6 +94,10 @@ main{
     gap: 3px;
 }
 
+small{
+    cursor: default;
+}
+
 footer{
     display: flex;
     justify-content: center;
