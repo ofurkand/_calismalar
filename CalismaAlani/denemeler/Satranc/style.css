@@ -1,0 +1,29 @@
+*{
+    padding: none;
+    margin: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: gray;
+}
+
+#satrancTahtasi {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* 8 sütun */
+    grid-template-rows: repeat(8, 50px);   /* 8 satır */
+    width: 400px;
+    height: 400px;
+}
+.kare {
+    width: 50px;
+    height: 50px;
+}
+.siyah {
+    background-color: black;
+}
+.beyaz {
+    background-color: white;
+}
