@@ -7,6 +7,7 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     background-color: gray;
 }
 
@@ -16,14 +17,25 @@ body{
     grid-template-rows: repeat(8, 50px);   /* 8 satır */
     width: 400px;
     height: 400px;
+    border: 1px solid #a6a2a2;
 }
 .kare {
     width: 50px;
     height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+
 }
 .siyah {
     background-color: black;
 }
 .beyaz {
     background-color: white;
+}
+
+img{
+    object-fit: contain;
+    /* width: 40px; */
 }
