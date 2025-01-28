@@ -1,0 +1,82 @@
+:root{
+    --anarenk: rgb(6, 19, 77);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    cursor: pointer;
+    font-size: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+h1{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+body{
+    width: 100vw;
+    /* min-width: 900px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+p{
+    font-size: 130%;
+}
+
+.header{
+    background-color: white;
+    height: 60px;
+    min-width: 900px;
+    
+    display: flex;
+    /* grid-template-columns: 200px 1fr auto; */
+    /* margin: 0 auto; */
+    padding: 1em;
+    /* padding-right: 30px; */
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    /* box-sizing: border-box; */
+}
+
+.header-navbar{
+    display: flex;
+    gap: 35px;
+    padding-right: 10px;
+    width: fit-content;
+}
+
+/* img{
+    object-fit: scale-down;
+} */
+
+.header-navbar button{
+    background-color: transparent;
+    border: none;
+    white-space: nowrap; /*Kaymasını önler*/
+}
+
+.grid-1{
+    grid-template-rows: 1fr 1fr;
+    display: grid;
+}
+
+.text-area{
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5em 1em;;
+}
+
+.text-area p{
+    box-sizing: border-box;
+    padding: 0 50px;
+}
