@@ -3,10 +3,13 @@ const verilerURL = "_kaynakca/veriler.json";
 let resimDosyaTurleri = ["img","object"];
 const gecerliResimDosyaTuru = resimDosyaTurleri[0];
 const siraGostergesi = document.getElementById("sira");
+const anaDugme = document.getElementById("oyun");
+const sifirlamaDugmesi = document.getElementById("sifirla");
+let oyunAktifligi = false;
 let sira = true; // (renk için geçici kullanımında)true: Beyaz
 const notasyon = 
 ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
+let baslangicKonumu=["rnbqkbnr","pppppppp","Pp4Q1","8","3p4","8","PPPPPPPP","RNBQKBNR"].reverse();
 
 function donusturFEN(girdi){
     return girdi.split('/').reverse();
@@ -16,8 +19,8 @@ for (let index = 1; index <= 64; index++) {
     let eklenecekKare = document.createElement('div')
     eklenecekKare.classList.add('kare');
     index%8==1?sira:sira=!sira;sira?
-    eklenecekKare.style.backgroundColor="#a6a2a2":
-    eklenecekKare.style.backgroundColor="gray";
+    eklenecekKare.classList.add('beyaz'):
+    eklenecekKare.classList.add('siyah');
     eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
     tahta.appendChild(eklenecekKare);
 }
@@ -47,11 +50,11 @@ for (let index = 1; index <= 64; index++) {
 //     }
 function yerlestir(konum,tas){
     if (Array.isArray(konum)){let j = 0;
-        konum.forEach(element => { let i = 0; j++; let artan = 0;
+        konum.forEach(element => { let i = 0; j++;
             // console.log(element);
             element.split('').forEach(element2 => { i++;
                 !isNaN(Number(element2)) ?
-                artan += Number(element2)-1 : yerlestir(`${notasyon[i-1+artan]}${j}`,element2);
+                i += Number(element2)-1 : yerlestir(`${notasyon[i-1]}${j}`,element2);
                 // console.log(artan+=element2) : yerlestir(`${notasyon[i-1+artan]}${j}`,element2);
                 // console.log([`${notasyon[i-1]}${j-1}`,element2]);
             });
@@ -87,52 +90,96 @@ function yerlestir(konum,tas){
 
         // tas===tas.toUpperCase()?null:_tas.style="filter: invert(100%);";
         tas===tas.toUpperCase()?_tas.style="filter: invert(100%);":null;
-        async function x() {
-            let response = await fetch(verilerURL);
-            let data = await response.json();
+        // async function x() {
+            // let response = await fetch(verilerURL);
+            // let data =  response.json();
+        fetch(verilerURL)
+        .then(response => response.json())
+        .then(data => {
+            _tas.src = "_kaynakca/"+data.taslar[tas.toLowerCase()].resimURL;
+            _tas.alt = (tas===tas.toUpperCase()?data.taslar[tas.toLowerCase()].isim.toUpperCase():data.taslar[tas].isim.toLowerCase());
+            // _tas.onerror = (_tas.style.visibility="hidden");
+            konum.appendChild(_tas);
+        });
+
             // console.log(tas);
             // console.log(data.taslar[tas.toLowerCase()]);
             // _tas.data  = "_kaynakca/"+data.taslar[tas.toLowerCase()].resimURL;
-            _tas.src  = "_kaynakca/"+data.taslar[tas.toLowerCase()].resimURL;
+            // _tas.src = "_kaynakca/"+data.taslar[tas.toLowerCase()].resimURL;
+            // _tas.alt = tas;
             // _tas.style.fill = tas===tas.toUpperCase()?"gray":"#a6a2a2";
-            konum.appendChild(_tas);
-        }; x();
+            // konum.appendChild(_tas);
+        // }; x();
         
     }
 }
 
-yerlestir(baslangicKonumu);
-
-let beyazlar = Array.from(document.querySelectorAll("img")).filter(svg => {
-    let style = window.getComputedStyle(svg);
-    return style.filter.includes('invert');
-});
-let siyahlar = Array.from(document.querySelectorAll("img")).filter(svg => {
-    let style = window.getComputedStyle(svg);
-    return !(style.filter.includes('invert'));
-});
+// let beyazlar = Array.from(document.querySelectorAll("img")).filter(svg => {
+//     let style = window.getComputedStyle(svg);
+//     return style.filter.includes('invert');
+// });
+// let siyahlar = Array.from(document.querySelectorAll("img")).filter(svg => {
+//     let style = window.getComputedStyle(svg);
+//     return !(style.filter.includes('invert'));
+// });
 
 // let i = 0
 // while(i < 3){
 
-hamleSureci(sira?beyazlar:siyahlar);
 function hamleSureci(takim){
     takim.forEach(img => {
-        img.parentElement.style.cursor = "pointer";
-        img.parentElement.addEventListener('mouseenter', (yer) => {
-            img.style.transition= '0.3s';
-            img.style.backgroundColor = 'yellow';
+        img.style.cursor = "pointer";
+        img.addEventListener('mouseenter', () => {
+            if (oyunAktifligi) {
+            img.parentElement.style.transition= '0.3s';
+            img.parentElement.style.backgroundColor = '#0000FF';
+        }
         });
-        img.parentElement.addEventListener('mouseleave', () => {
-            img.style.backgroundColor = '';
+        img.addEventListener('mouseleave', () => {
+            if (oyunAktifligi) {
+                img.parentElement.style.backgroundColor = '';
+            }
         });
-        img.parentElement.addEventListener('click', (yer) => { 
+        img.addEventListener('click', (yer) => { 
             // Hamle Kısmı
-            let secili = yer.target;
-            kontrol(secili);
+            if (oyunAktifligi) {
+                let secili = yer.target;
+                kontrol(secili);
+            }
         })
     });
 }
+
+
+anaDugme.addEventListener("click", () => {
+    hamleSureci(Array.from(document.querySelectorAll("img")).filter(svg => {
+        // let style = window.getComputedStyle(svg);
+    return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
+    // console.log(document.querySelectorAll('img'));
+    oyunAktifligi = true;
+});
+// console.log(document.body.innerHTML);
+sifirlamaDugmesi.addEventListener("click", ()=>{
+    Array.from(document.getElementsByClassName('kare')).forEach(div => {
+        while (div.firstChild) {
+            console.log(div);
+            div.removeChild(div.firstChild);
+        }
+    });
+    yerlestir(baslangicKonumu);
+    // Array.from(document.getElementsByClassName('siyah')).forEach(a => a.removeAttribute("style"));
+    Array.from(document.getElementsByClassName('siyah')).forEach(a => a.style.backgroundColor='');
+    Array.from(document.getElementsByClassName('beyaz')).forEach(a => a.style.backgroundColor='');
+    // button.removeEventListener('mouseenter',hamleSureci);
+    // button.removeEventListener('mouseleave',hamleSureci);
+    // button.removeEventListener('click',hamleSureci);
+    // oyunAktifligi = true;
+})
+
+
+// hamleSureci(Array.from(document.querySelectorAll("img")).filter(svg => {
+//     // let style = window.getComputedStyle(svg);
+//     return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
 
 function tasAdi(konum){
     return konum.src.split('/').at(-1).split(".")[0]
@@ -148,7 +195,7 @@ function kontrol(secili){
                 // sağa
                 if(!(konumArr[0] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
                     }
@@ -212,15 +259,13 @@ function kontrol(secili){
                 
                 break;
             case "vezir":
-                // sağa
-                while(!((konumArr[0] === "H") || (notasyon[i] === "H"))){
+                // sağa ok
+                while(!(notasyon[i] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
-                        else{
-                            break;
-                        }
+                        break;
                     }
                     else{
                         document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
@@ -228,22 +273,27 @@ function kontrol(secili){
                     i++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
-                // sola
-                while(!(konumArr[0] === "A" || notasyon[i] === "A")){
+                // sola ok
+                while(!(notasyon[i] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                     }
                     i--;
                 }
                 i = notasyon.indexOf(konumArr[0]);
-                // yukarı
+                // yukarı ok
                 while(!((cnt+Number(konumArr[1])) === 8)){
                     if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                            
                         }
+                        break;
                     }
                     else{
                         document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
@@ -255,9 +305,10 @@ function kontrol(secili){
                 // aşağı
                 while(!(Number(konumArr[1]) === 1)){
                     if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
                     document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";                    i++;
                 }
