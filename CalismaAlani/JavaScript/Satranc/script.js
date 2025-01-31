@@ -9,7 +9,7 @@ let oyunAktifligi = false;
 let sira = true; // (renk için geçici kullanımında)true: Beyaz
 const notasyon = 
 ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-let baslangicKonumu=["rnbqkbnr","pppppppp","Pp4Q1","8","3p4","8","PPPPPPPP","RNBQKBNR"].reverse();
+let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
 
 function donusturFEN(girdi){
     return girdi.split('/').reverse();
@@ -126,6 +126,12 @@ function yerlestir(konum,tas){
 // let i = 0
 // while(i < 3){
 
+// // Adding event listeners
+// buttons.forEach(button => button.addEventListener("click", handleClick));
+
+// // Removing event listeners later
+// buttons.forEach(button => button.removeEventListener("click", handleClick));
+
 function hamleSureci(takim){
     takim.forEach(img => {
         img.style.cursor = "pointer";
@@ -150,14 +156,38 @@ function hamleSureci(takim){
     });
 }
 
+// function event1(){
+//     takimAyristir.parentElement.style.transition= '0.3s';
+//     takimAyristir.parentElement.style.backgroundColor = '#0000FF';
+// }
+// function event2(){
+//     takimAyristir.parentElement.style.backgroundColor = '';
+//     console.log("nbr");
+// }
+// function event3(){
+//     if (oyunAktifligi) {
+//         let secili = this.target;
+//         kontrol(secili);
+//     }
+// }
+// let takimAyristir = Array.from(document.querySelectorAll("img")).filter(svg => {return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
+// anaDugme.addEventListener("click", () => {
+//     takimAyristir.forEach(img => {
+//         img.addEventListener('mouseenter', event1);
+//         img.addEventListener('mouseleave', event2);
+//         img.addEventListener('click', event3);
+//     // hamleSureci(Array.from(document.querySelectorAll("img")).filter(svg => {
+//     //     // let style = window.getComputedStyle(svg);
+//     // return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
+//     // console.log(document.querySelectorAll('img'));
+//     });
+//     oyunAktifligi = true;});
 
-anaDugme.addEventListener("click", () => {
-    hamleSureci(Array.from(document.querySelectorAll("img")).filter(svg => {
-        // let style = window.getComputedStyle(svg);
-    return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
-    // console.log(document.querySelectorAll('img'));
-    oyunAktifligi = true;
+anaDugme.addEventListener("click", ()=>{
+    hamleSureci(Array.from(document.querySelectorAll("img")).filter(svg => {return (sira?window.getComputedStyle(svg).filter.includes('invert'):!(window.getComputedStyle(svg).filter.includes('invert')))}));
+    oyunAktifligi = !oyunAktifligi;
 });
+
 // console.log(document.body.innerHTML);
 sifirlamaDugmesi.addEventListener("click", ()=>{
     Array.from(document.getElementsByClassName('kare')).forEach(div => {
@@ -199,67 +229,98 @@ function kontrol(secili){
                             document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
                     }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+
+                    }
                 }
                 // sola
                 if(!(konumArr[0] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+
                     }
                 }
                 // yukarı
                 if(!(Number(konumArr[1]) === 8)){
                     if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+
                     }
                 }
                 // aşağı
                 if(!(Number(konumArr[1]) === 1)){
                     if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+
                     }
                 }
                 // sol aşağı
                 if(!(Number(konumArr[1]) === 1)&&!(konumArr[0] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+
                     }
                 }
                 // sol üst
                 if(!(Number(konumArr[1]) === 8)&&!(konumArr[0] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
                         }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+
                     }
                 }
                 // sağ üst
                 if(!(Number(konumArr[1]) === 8)&&!(konumArr[0] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
                     }
                 }
                 // sağ aşağı
                 if(!(Number(konumArr[1]) === 1)&&!(konumArr[0] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                         }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                     }
                 }
                 
                 break;
             case "vezir":
-                // sağa ok
+                // sağa
                 while(!(notasyon[i] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
                         if (!(document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
@@ -273,12 +334,13 @@ function kontrol(secili){
                     i++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
-                // sola ok
+                // sola
                 while(!(notasyon[i] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).hasChildNodes()) {
                         if (!(document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
                             document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
                     else{
                         document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
@@ -286,7 +348,7 @@ function kontrol(secili){
                     i--;
                 }
                 i = notasyon.indexOf(konumArr[0]);
-                // yukarı ok
+                // yukarı
                 while(!((cnt+Number(konumArr[1])) === 8)){
                     if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
                         if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
@@ -303,83 +365,321 @@ function kontrol(secili){
                 cnt = 0;
                 i = notasyon.indexOf(konumArr[0]);
                 // aşağı
-                while(!(Number(konumArr[1]) === 1)){
-                    if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                while(!(Number(konumArr[1]-cnt) === 1)){
+                    if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
                         }
                         break;
                     }
-                    document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";                    i++;
+                    else{
+                        document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";                    
+                    }
+                    cnt++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
+                cnt = 0;
                 // sol aşağı
                 while(!((Number(konumArr[1])-cnt === 1)||(notasyon[i-cnt] === "A"))){
-                    if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                    if (document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
-                    cnt;
-                    i++;
+                    else{
+                        document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
                 cnt=0;
                 // sol üst
-                while(!((Number(konumArr[1]) === 8)||(notasyon[i-cnt] === "A"))){
-                    if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                while(!((Number(konumArr[1])+cnt === 8)||(notasyon[i-cnt] === "A"))){
+                    if (document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
                     else{
-                        document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                        document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
                     }
-                    i++;
                     cnt++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
                 cnt=0;
                 // sağ üst
                 while(!((Number(konumArr[1])+cnt === 8)||(notasyon[i+cnt] === "H"))){
-                    if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                    if (document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
-                    i++;
+                    else{
+                        document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                    }
                     cnt++;
                 }
                 i = notasyon.indexOf(konumArr[0]);
                 cnt=0;
                 // sağ aşağı
-                while(!((Number(konumArr[1]) === 1)||(notasyon[i+cnt] === "H"))){
-                    if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).hasChildNodes()) {
-                        if ((document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                while(!((Number(konumArr[1])-cnt === 1)||(notasyon[i+cnt] === "H"))){
+                    if (document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
                         }
+                        break;
                     }
-                    i++;
+                    else{
+                        document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                    }
                     cnt++;
                 }
-                
                 break;
             case "fil":
-                
+                // sol aşağı
+                while(!((Number(konumArr[1])-cnt === 1)||(notasyon[i-cnt] === "A"))){
+                    if (document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
+                }
+                i = notasyon.indexOf(konumArr[0]);
+                cnt=0;
+                // sol üst
+                while(!((Number(konumArr[1])+cnt === 8)||(notasyon[i-cnt] === "A"))){
+                    if (document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
+                }
+                i = notasyon.indexOf(konumArr[0]);
+                cnt=0;
+                // sağ üst
+                while(!((Number(konumArr[1])+cnt === 8)||(notasyon[i+cnt] === "H"))){
+                    if (document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
+                }
+                i = notasyon.indexOf(konumArr[0]);
+                cnt=0;
+                // sağ aşağı
+                while(!((Number(konumArr[1])-cnt === 1)||(notasyon[i+cnt] === "H"))){
+                    if (document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
+                }
                 break;
             case "at":
-                
+                // üst sol
+                if((Number(konumArr[1]) < 7)&&!(konumArr[0] === "A")){
+                    if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+2}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+2}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+2}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+2}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // üst sağ
+                if((Number(konumArr[1]) < 7)&&!(konumArr[0] === "H")){
+                    if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+2}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+2}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+2}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])+2}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // alt sol
+                if((Number(konumArr[1]) > 2)&&!(konumArr[0] === "A")){
+                    if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-2}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-2}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-2}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])-2}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // alt sağ
+                if((Number(konumArr[1]) > 2)&&!(konumArr[0] === "H")){
+                    if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-2}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-2}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-2}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-2}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // sağ üst
+                if((Number(konumArr[1]) < 8)&&!((konumArr[0] === "H")||(konumArr[0] === "G"))){
+                    if (document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])+1}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // sağ alt
+                if((Number(konumArr[1]) > 1)&&!((konumArr[0] === "H")||(konumArr[0] === "G"))){
+                    if (document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])-1}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // sol üst
+                if((Number(konumArr[1]) < 8)&&!((konumArr[0] === "A")||(konumArr[0] === "B"))){
+                    if (document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])+1}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // sol alt
+                if((Number(konumArr[1]) > 1)&&!((konumArr[0] === "A")||(konumArr[0] === "B"))){
+                    if (document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])-1}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
+                    }
+                }
                 break;
             case "kale":
-                
+                // sağa
+                while(!(notasyon[i] === "H")){
+                    if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+                    }
+                    i++;
+                }
+                i = notasyon.indexOf(konumArr[0]);
+                // sola
+                while(!(notasyon[i] === "A")){
+                    if (document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i-1]}${konumArr[1]}`).style.backgroundColor="darkblue";
+                    }
+                    i--;
+                }
+                i = notasyon.indexOf(konumArr[0]);
+                // yukarı
+                while(!((cnt+Number(konumArr[1])) === 8)){
+                    if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                            
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i]}${Number(konumArr[1])+1+cnt}`).style.backgroundColor="darkblue";
+                    }
+                    cnt++;
+                }
+                cnt = 0;
+                i = notasyon.indexOf(konumArr[0]);
+                // aşağı
+                while(!(Number(konumArr[1]-cnt) === 1)){
+                    if (document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                        }
+                        break;
+                    }
+                    else{
+                        document.getElementById(`${notasyon[i]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";                    
+                    }
+                    cnt++;
+                }
                 break;
             case "piyon":
-                
+                // normal hareket
+                if (!(document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).hasChildNodes())) {
+                    document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).style.backgroundColor="darkblue";
+                    // başlangıç yararı
+                    if (!(document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+2:Number(konumArr[1])-2)}`).hasChildNodes())&&(sira?Number(konumArr[1])===2:Number(konumArr[1])===7)) {
+                        document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+2:Number(konumArr[1])-2)}`).style.backgroundColor="darkblue";
+                    }
+                }
+                // çapraz kontrol
+                    // sağ
+                    if (!(konumArr[0]==="H")) {
+                        if ((document.getElementById(`${notasyon[i+1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).hasChildNodes())&&
+                        !(document.getElementById(`${notasyon[i+1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                    // sol
+                    if (!(konumArr[0]==="A")) {
+                        if ((document.getElementById(`${notasyon[i-1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).hasChildNodes())&&
+                        !(document.getElementById(`${notasyon[i-1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).firstChild.style.filter.includes('invert')===sira)) {
+                        document.getElementById(`${notasyon[i-1]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).style.backgroundColor="darkblue";
+                        }
+                    }
+                // if ((document.getElementById(`${(sira?notasyon[i+1]:notasyon[i-1])}${Number(konumArr[1])+1}`).hasChildNodes())&&
+                // !(document.getElementById(`${(sira?notasyon[i+1]:notasyon[i-1])}${Number(konumArr[1])+1}`).firstChild.style.filter.includes('invert')===sira)) {
+                //     document.getElementById(`${(sira?notasyon[i+1]:notasyon[i-1])}${Number(konumArr[1])+1}`).style.backgroundColor="darkblue";
+                // }
+
+                // en-passant şu anlık devre-dışı
                 break;
-            
             default:
                 break;
-            
         }
 }
 
