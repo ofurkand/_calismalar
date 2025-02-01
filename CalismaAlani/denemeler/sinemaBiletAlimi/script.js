@@ -213,4 +213,4 @@ async function veriislem (islem="kurulum",veri=0)
     }
 }
 
-veriislem("kurulum",0);
+veriislem("kurulum",1);
