@@ -4,17 +4,20 @@
         "0":
         {
             "ad":"Oppenheimer",
-            "gosterimdeMi": true
+            "gosterimdeMi": true,
+            "biletFiyat": 25
         },
         "1":
         {
             "ad":"Yıldızlararası",
-            "gosterimdeMi": true
+            "gosterimdeMi": true,
+            "biletFiyat": 11
         },
         "2":
         {
             "ad":"Esaretin Bedeli",
-            "gosterimdeMi": true
+            "gosterimdeMi": true,
+            "biletFiyat": 50.50
         }
     },
     "salonlar":
