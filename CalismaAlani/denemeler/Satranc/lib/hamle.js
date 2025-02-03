@@ -3,6 +3,7 @@ import { takimSecici } from "./takimSecici.js";
 import { eventAdded_hamleSureci, turuncuRGB} from "../script.js";
 import { fareAyrildi, fareUstunde } from "./fare.js";
 import { kontrol } from "./kontrol.js";
+import { tasAdi } from "./tasAdi.js";
 
 export let hamleSecildi;hamleSecildi = false;
 
@@ -20,12 +21,42 @@ export function hamleSirasi(x = null){
     hamleSecildi = false;
 }
 
+// hamle sonrası rok bozucu
+function rokSifirla(){
+    if (sira) {
+        _beyazKisaRok = false; // şah kanadı
+        _beyazUzunRok = false; // vezir kanadı
+    }
+    else{
+        _siyahKisaRok = false;
+        _siyahUzunRok = false;
+    }
+}
+
 export function hamleYapim() {
     if (hamleSecildi){
         if(getComputedStyle(this).backgroundColor === 'rgb(0, 0, 139)'){
             let secili = (Array.from(document.getElementsByClassName('kare')).filter(element => {
                 return getComputedStyle(element).backgroundColor === turuncuRGB;
             }))[0];
+            if (tasAdi(secili.firstChild) === "sah") {
+                if(Math.abs(notasyon.indexOf(this.id.split('')[0])-notasyon.indexOf(secili.id.split('')[0]))>1){
+                    rokSifirla();
+                    Math.abs(notasyon.indexOf(this.id.split('')[0])-8)<Math.abs(notasyon.indexOf(this.id.split('')[0])-1) ?
+                        document.getElementById(`${notasyon[notasyon.indexOf(this.id.split('')[0])-1]}${this.id.split('')[1]}`)
+                        .appendChild(document.getElementById(sira?"H1":"H8").firstChild):
+                        document.getElementById(`${notasyon[notasyon.indexOf(this.id.split('')[0])+1]}${this.id.split('')[1]}`)
+                        .appendChild(document.getElementById(sira?"A1":"A8").firstChild);
+                }
+            }
+            if (tasAdi(secili.firstChild) === "kale") {
+                if(secili.id.split('')[0] === "A" && (sira?_beyazUzunRok:_siyahUzunRok)){
+                    sira?_beyazUzunRok=false:_siyahUzunRok=false;
+                }
+                else if(secili.id.split('')[0] === "H" && (sira?_beyazKisaRok:_siyahKisaRok)){
+                    sira?_beyazKisaRok=false:_siyahKisaRok=false;
+                }
+            }
             this.hasChildNodes()?
             this.replaceChild(secili.firstChild,this.firstChild):
             this.appendChild(secili.firstChild);
@@ -33,6 +64,10 @@ export function hamleYapim() {
             this.style.boxShadow = "";
             hamleSirasi();
         }
+        // if (getComputedStyle(this).backgroundColor === turuncuRGB){
+            hamleSecildi = false;
+            secimTemizle();
+        // }
     }
     else{
         if (this.parentElement.hasChildNodes()) {

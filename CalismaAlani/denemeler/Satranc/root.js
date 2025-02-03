@@ -1,10 +1,18 @@
 const siraGostergesi = document.getElementById("sira");
+const baslamaDugmesi = document.getElementById("oyun");
+const sifirlamaDugmesi = document.getElementById("sifirla");
 
 let _oyunAktifligi = false;
 let _sira = true;
+let _siyahKisaRok = true;
+let _siyahUzunRok = true;
+let _beyazUzunRok = true;
+let _beyazKisaRok = true;
+// let _tahtaYonu = true;
 
 Object.defineProperty(window, 'sira', {
     get() {
+        baslamaDugmesi.disabled = oyunAktifligi;
         return _sira;
     },
     set(value) {

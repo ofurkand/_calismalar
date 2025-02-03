@@ -104,17 +104,51 @@ export function kontrol(secili){
                 i = notasyon.indexOf(konumArr[0]);
                 cnt=0;
                 // sağ aşağı
-                if(!((Number(konumArr[1])-cnt === 1)||(notasyon[i+cnt] === "H"))){
-                    if (document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
-                        if (!(document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).firstChild.style.filter.includes('invert')===sira)) {
-                            document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                if(!((Number(konumArr[1]) === 1)||(notasyon[i] === "H"))){
+                    if (document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).hasChildNodes()) {
+                        if (!(document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).firstChild.style.filter.includes('invert')===sira)) {
+                            document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                         }
                     }
                     else{
-                        document.getElementById(`${notasyon[i+1+cnt]}${Number(konumArr[1])-1-cnt}`).style.backgroundColor="darkblue";
+                        document.getElementById(`${notasyon[i+1]}${Number(konumArr[1])-1}`).style.backgroundColor="darkblue";
                     }
                     cnt++;
                 }
+
+                // roklar
+                let _geciciKontrol = true;
+                cnt = 2;
+
+                // kısa rok
+                i = notasyon.indexOf(konumArr[0]);
+                if (!(konumArr[0] === "H") && (sira ? _beyazKisaRok : _siyahKisaRok) && (sira?Number(konumArr[1]) === 1:Number(konumArr[1])===8)) {
+                    // while(notasyon[i+cnt] != "H"){
+                    while(cnt > 0){
+                        if (document.getElementById(`${notasyon[i+Math.abs(cnt)]}${Number(konumArr[1])}`).hasChildNodes()) {
+                            _geciciKontrol = false; break;
+                        } cnt--;
+                    }
+                    if(_geciciKontrol){
+                        document.getElementById(`${notasyon[i+2]}${Number(konumArr[1])}`).style.backgroundColor="darkblue";
+                    }
+                }
+
+                // uzun rok
+                _geciciKontrol = true;
+                cnt = 3;
+                if (!(konumArr[0] === "A") && (sira ? _beyazUzunRok : _siyahUzunRok) && (sira?Number(konumArr[1]) === 1:Number(konumArr[1])===8)) {
+                    // while(notasyon[i+cnt] != "A"){
+                    while(cnt > 0){
+                        if (document.getElementById(`${notasyon[i-cnt]}${Number(konumArr[1])}`).hasChildNodes()) {
+                            _geciciKontrol = false; break;
+                        } cnt--;
+                    }
+                    if(_geciciKontrol){
+                        document.getElementById(`${notasyon[i-2]}${Number(konumArr[1])}`).style.backgroundColor="darkblue";
+                    }
+                }
+
                 break;
             case "vezir":
                 // sağa
