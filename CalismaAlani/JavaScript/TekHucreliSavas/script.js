@@ -23,4 +23,5 @@ function oyunBasla(){
     oyunEtkinligi = true;
     oyunAlani.style.justifyContent = "default";
     baslaBtn.style.display = "none";
+    
 }

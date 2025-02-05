@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    display: inline-block;
+}
+
+.binalar{
+    display: grid;
+    grid-template-columns: repeat(15,50px);
+    grid-template-rows: repeat(5,50px);
+    background-color: red;
+}
+
+.sokak{
+    display: grid;
+    grid-template-columns: repeat(30,25px);
+    grid-template-rows: repeat(5,25px);
+    background-color: aqua;
+}
+
+.secenekler{
+    display: grid;
+    grid-template-columns: repeat(15,50px);
+    grid-template-rows: repeat(1,50px);
+    background-color: blue;
+}
