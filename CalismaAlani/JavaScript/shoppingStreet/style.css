@@ -9,15 +9,15 @@ main{
 
 .binalar{
     display: grid;
-    grid-template-columns: repeat(15,50px);
-    grid-template-rows: repeat(5,50px);
+    grid-template-columns: repeat(var(--xSirasiBina),50px);
+    grid-template-rows: repeat(var(--ySirasiBina),50px);
     background-color: red;
 }
 
 .sokak{
     display: grid;
-    grid-template-columns: repeat(30,25px);
-    grid-template-rows: repeat(5,25px);
+    grid-template-columns: repeat(var(--xSirasiSokak),25px);
+    grid-template-rows: repeat(var(--ySirasiSokak),25px);
     background-color: aqua;
 }
 
