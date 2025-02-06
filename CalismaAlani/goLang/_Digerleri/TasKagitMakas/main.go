@@ -1,11 +1,11 @@
 package main
 
-import (
-	"TasKagitMakas/calismaAlani/goLang/_Digerleri/TasKagitMakas/database"
+// import (
+// 	"TasKagitMakas/calismaAlani/goLang/_Digerleri/TasKagitMakas/database"
 
-	"github.com/gofiber/fiber"
-	"gorm.io/gorm"
-)
+// 	"github.com/gofiber/fiber"
+// 	"gorm.io/gorm"
+// )
 
 var DB *gorm.DB
 
