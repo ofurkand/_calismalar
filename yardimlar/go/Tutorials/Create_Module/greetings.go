@@ -13,8 +13,10 @@ func Hello(name string) (string, error) {
 		return "", errors.New("empty name caused the error")
 	}
 	// Return a greeting that embeds the name in a message.
+
 	// message := fmt.Sprintf("Hi, %v. Welcome!", name)
 	message := fmt.Sprintf(randomFormat(), name)
+	// message := fmt.Sprint(randomFormat())
 	return message, nil
 }
 
