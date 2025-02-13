@@ -1,34 +1,24 @@
 package main
 
-// import (
-// 	"TasKagitMakas/calismaAlani/goLang/_Digerleri/TasKagitMakas/database"
-
-// 	"github.com/gofiber/fiber"
-// 	"gorm.io/gorm"
-// )
-
-var DB *gorm.DB
+import "fmt"
 
 func main() {
-	database.Connect()
 
-	// database.DB
+	Taslar := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
 
-	app := fiber.New()
+	func Karsilasma() 
 
-	// routers.RouterApp(app)
 
-	// app.Post("/", func(c *fiber.Ctx) error {
-	// 	return c.JSON(fiber.Map{
-	// 		"message": "bismillah",
-	// 	})
-	// })
-	// app.Listen(":8000")
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Bismillah")
-	})
-
-	app.Listen(":3000")
-
+	fmt.Println("Hamlenizi yapın:")
 }
