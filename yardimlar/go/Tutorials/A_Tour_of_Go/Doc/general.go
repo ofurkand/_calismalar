@@ -428,19 +428,257 @@
 // }
 
 // defer.go
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	defer fmt.Println("world")
+// 	defer fmt.Println("hello")
+
+// 	fmt.Println("counting")
+
+// 	for i := 0; i < 10; i++ {
+// 		defer fmt.Println(i)
+// 	}
+
+// 	fmt.Println("done")
+// }
+
+// pointers.go
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	i, j := 42, 2701
+
+// 	p := &i         // point to i
+// 	fmt.Println(*p) // read i through the pointer
+// 	*p = 21         // set i through the pointer
+// 	fmt.Println(i)  // see the new value of i
+
+// 	p = &j         // point to j
+// 	*p = *p / 37   // divide j through the pointer
+// 	fmt.Println(j) // see the new value of j
+// }
+
+// structs.go
+// package main
+
+// import "fmt"
+
+// type Vertex struct {
+// 	X int
+// 	Y int
+// }
+
+// func main() {
+// 	v := Vertex{1, 2}
+// 	v.X = 4
+// 	p := &v
+// 	fmt.Println(v)
+// 	p.X = 1e9
+// 	fmt.Println(v)
+// }
+
+// struct-literals.go
+// package main
+
+// import "fmt"
+
+// type Vertex struct {
+// 	X, Y int
+// }
+
+// var (
+// 	v1 = Vertex{1, 2}  // has type Vertex
+// 	v2 = Vertex{X: 1}  // Y:0 is implicit
+// 	v3 = Vertex{}      // X:0 and Y:0
+// 	p  = &Vertex{1, 2} // has type *Vertex
+// )
+
+// func main() {
+// 	fmt.Println(v1, v2, v3, p)
+// }
+
+// array.go
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	var a [2]string
+// 	a[0] = "Hello"
+// 	a[1] = "World"
+// 	fmt.Println(a[0], a[1])
+// 	fmt.Println(a)
+
+// 	primes := [6]int{2, 3, 5, 7, 11, 13}
+// 	fmt.Println(primes)
+// 	var s []int = primes[1:4]
+// 	fmt.Println(s)
+
+// 	names := [4]string{
+// 		"John",
+// 		"Paul",
+// 		"George",
+// 		"Ringo",
+// 	}
+// 	fmt.Println(names)
+
+// 	c := names[0:2]
+// 	d := names[1:3]
+// 	fmt.Println(c, d)
+
+// 	d[0] = "XXX"
+// 	fmt.Println(c, d)
+// 	fmt.Println(names)
+// 	// A slice does not store any data, <================
+// 	// it just describes a section of an underlying array.
+// 	// It actually acts like pointers
+// }
+
+// slice-literals.go
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	q := []int{2, 3, 5, 7, 11, 13}
+// 	fmt.Println(q)
+
+// 	r := []bool{true, false, true, true, false, true}
+// 	fmt.Println(r)
+
+// 	type z struct {
+// 		X int
+// 		Y bool
+// 	}
+// 	orjs := []int{2, 3, 5, 7, 11, 13}
+// 	printSlice(orjs)
+// 	s := orjs[:0]
+
+// 	// Important Section Below <==================
+// 	// Slices don't affect main array's values, but their own.
+
+// 	// Slice the slice to give it zero length.
+// 	printSlice(s)
+
+// 	// Extend its length.
+// 	s = s[:4]
+// 	printSlice(s)
+
+// 	// Drop its first two values.
+// 	s = s[2:]
+// 	printSlice(s)
+// 	// Important Section Above <==================
+
+// 	s = []int{2, 3, 5, 7, 11, 13} // Reason why we set this again
+// 	s = s[1:4]
+// 	fmt.Println(s)
+
+// 	s = s[:2]
+// 	fmt.Println(s)
+
+// 	s = s[1:]
+// 	fmt.Println(s)
+// 	var a [10]int
+// 	// All of'em're same.
+// 	fmt.Println(a[0:10])
+// 	fmt.Println(a[:10])
+// 	fmt.Println(a[0:])
+// 	fmt.Println(a[:])
+
+// 	var zed []z
+// 	// for _index, value := range r {
+// 	// 	var Addition z = z{
+// 	// 		X: q[_index],
+// 	// 		Y: value,
+// 	// 	}
+// 	// for _index := range r {
+// 	// 	var Addition z = z{
+// 	// 		X: q[_index],
+// 	// 		Y: r[_index],
+// 	// 	}
+// 	// for _index := range r {
+// 	// 	var Addition = z{
+// 	// 		X: q[_index],
+// 	// 		Y: r[_index],
+// 	// 	}
+// 	// for _index := range r {
+// 	// 	Addition := z{
+// 	// 		X: q[_index], Y: r[_index],
+// 	// 	}
+// 	for _index := range r {
+// 		zed = append(zed, z{
+// 			X: q[_index], Y: r[_index],
+// 		})
+// 	}
+// 	ss := []struct {
+// 		i int
+// 		b bool
+// 	}{
+// 		{2, true},
+// 		{3, false},
+// 		{5, true},
+// 		{7, true},
+// 		{11, false},
+// 		{13, true},
+// 	}
+// 	fmt.Println(ss)
+// 	fmt.Println(zed)
+
+// 	var w []int
+// 	fmt.Println(w, len(w), cap(w))
+// 	if w == nil {
+// 		fmt.Println("nil!")
+// 	}
+
+// 	aa := make([]int, 5) // len(a)=5
+// 	printSlice2("a", aa)
+
+// 	bb := make([]int, 0, 5) // len(b)=0, cap(b)=5
+// 	printSlice2("b", bb)
+
+// 	cc := bb[:2]
+// 	printSlice2("c", cc) // len(b)=5, cap(b)=5
+
+// 	dd := cc[2:5]
+// 	printSlice2("d", dd) // len(b)=4, cap(b)=4
+// }
+// func printSlice(s []int) {
+// 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+// }
+// func printSlice2(s string, x []int) {
+// 	fmt.Printf("%s len=%d cap=%d %v\n",
+// 		s, len(x), cap(x), x)
+// }
+
+// slices-of-slices.go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	defer fmt.Println("world")
-	defer fmt.Println("hello")
-
-	fmt.Println("counting")
-
-	for i := 0; i < 10; i++ {
-		defer fmt.Println(i)
+	// Create a tic-tac-toe board.
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
 	}
 
-	fmt.Println("done")
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
 }
