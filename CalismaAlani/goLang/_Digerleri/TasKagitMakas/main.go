@@ -1,43 +1,64 @@
 package main
 
 import (
-	"fmt"
-	"strings"
+	"slices"
 )
 
-type Tas struct {
-	id       uint8
-	isim     string
-	ustunluk []uint8 // veriler {} içine yazılacak.
+type Hamle struct {
+	// id uint8
+	// isim     string
+	// ustunluk []uint8 // veriler {} içine yazılacak.
+	// ustunluk []*Hamle
+	ustunluk []string
 }
 
 type OyunModu struct {
-	id            uint8
-	isim          string
-	gecerliTaslar []Tas
+	id uint8
+	// isim            string
+	// gecerliHamleler []Hamle
+	gecerliHamleler []Hamle
 }
 
-var Taslar = []Tas{
-	{id: 0, isim: "taş", ustunluk: []uint8{2}},
-	{id: 1, isim: "kağıt", ustunluk: []uint8{0}},
-	{id: 2, isim: "makas", ustunluk: []uint8{1}},
+// var Hamleler = []Hamle{
+// 	{id: 0, isim: "taş", ustunluk: []uint8{
+// 		2,
+// 	}},
+// 	{id: 1, isim: "kağıt", ustunluk: []uint8{
+// 		0,
+// 	}},
+// 	{id: 2, isim: "makas", ustunluk: []uint8{
+// 		1,
+// 	}},
+// }
+
+var Hamleler = map[string]Hamle{
+	"kağıt": { /*id: 1,*/ ustunluk: []string{"taş"}},
+	// "taş":   { /*id: 0,*/ ustunluk: []uint8{2}},
+	// "taş":   { /*id: 0,*/ ustunluk: []*Hamle{Hamleler["makas"]}},
+	"taş":   { /*id: 1,*/ ustunluk: []string{"makas"}},
+	"makas": { /*id: 1,*/ ustunluk: []string{"kağıt"}},
 }
 
-func Karsilasma(tas1, tas2 string) string {
-	if tas1 == tas2 {
+var OyunModları = map[string]OyunModu{
+	"Asıl": {id: 0, gecerliHamleler: []Hamle{Hamleler["kağıt"], Hamleler["taş"], Hamleler["makas"]}},
+}
+
+func Karsilasma(Hamle1, Hamle2 string) string {
+	if Hamle1 == Hamle2 {
 		return Cozulum(0)
 	}
-	// tas1 değeri aranıyor
-	for index, SeciliTas := range Taslar {
-		if SeciliTas.isim == tas1 {
-			// tas1 bulundu. tas2 değerini yenebilir mi inceleniyor
-			for _, arananIndex := range Taslar[index].ustunluk {
-				if Taslar[arananIndex].isim == tas2 {
-					return Cozulum(1)
-				}
-			}
-		}
-	}
+	// Hamle1 değeri aranıyor
+	// for index, SeciliHamle := range Hamleler {
+	// 	if SeciliHamle.isim == Hamle1 {
+	// 		// Hamle1 bulundu. Hamle2 değerini yenebilir mi inceleniyor
+	// 		for _, arananIndex := range Hamleler[index].ustunluk {
+	// 			if Hamleler[arananIndex].isim == Hamle2 {
+	// 				return Cozulum(1)
+	// 			}
+	// 		}
+	// 	}
+	// }
+	slices.Contains(Hamleler[Hamle1].ustunluk, Hamle2)
 	return Cozulum(2)
 }
 
@@ -56,18 +77,18 @@ func Cozulum(sonuc uint8) string {
 
 func main() {
 
-	// Taslar := []Tas{
+	// Hamleler := []Hamle{
 	// 	{id: 0, isim: "taş", ustunluk: []uint8{2}},
 	// 	{id: 1, isim: "kağıt", ustunluk: []uint8{0}},
 	// 	{id: 2, isim: "makas", ustunluk: []uint8{1}},
 	// }
 	// Eğer anahtarlar dinamik ve sonradan değişebilir olacaksa map kullanılır.
-	// Taslar := []struct {
+	// Hamleler := []struct {
 	// 	id       uint8
 	// 	isim     string
 	// 	ustunluk []uint8 // veriler {} içine yazılacak.
 	// }{
-	// 	{0, "Tas", []uint8{1}},
+	// 	{0, "Hamle", []uint8{1}},
 	// 	{1, "Makas", []uint8{1}},
 	// 	{2, "Kagit", []uint8{0}},
 	// 	// {3, true},
@@ -76,18 +97,18 @@ func main() {
 	// }
 
 	// Artık dönüş değerleri için futbol bahis terimleri kullanılacak (1X2).
-	// func Karsilasma (tas1, tas2 string) uint { // Fonksiyon içindeyken tekrar bu
+	// func Karsilasma (Hamle1, Hamle2 string) uint { // Fonksiyon içindeyken tekrar bu
 	// şekilde tanımlamak yanlış olur.
-	// Karsilasma := func(tas1, tas2 string) uint8 {
-	// 	if tas1 == tas2 {
+	// Karsilasma := func(Hamle1, Hamle2 string) uint8 {
+	// 	if Hamle1 == Hamle2 {
 	// 		return 0
 	// 	}
-	// 	// tas1 değeri aranıyor
-	// 	for index, SeciliTas := range Taslar {
-	// 		if SeciliTas.isim == tas1 {
-	// 			// tas1 bulundu. tas2 değerini yenebilir mi inceleniyor
-	// 			for _, arananIndex := range Taslar[index].ustunluk {
-	// 				if Taslar[arananIndex].isim == tas2 {
+	// 	// Hamle1 değeri aranıyor
+	// 	for index, SeciliHamle := range Hamleler {
+	// 		if SeciliHamle.isim == Hamle1 {
+	// 			// Hamle1 bulundu. Hamle2 değerini yenebilir mi inceleniyor
+	// 			for _, arananIndex := range Hamleler[index].ustunluk {
+	// 				if Hamleler[arananIndex].isim == Hamle2 {
 	// 					return 1
 	// 				}
 	// 			}
@@ -95,34 +116,38 @@ func main() {
 	// 	}
 	// 	return 2
 	// }
-	var TasSecimler []string
-	for _, SeciliTas := range Taslar {
-		TasSecimler = append(TasSecimler, SeciliTas.isim)
-	}
+	// var HamleSecimler = maps.Keys(Hamleler) // (istenmeyen kod) pointerları temsil eder. 'Dereference' ederek gerçek değerlerine ulaşabilirsin. (GPT)
+	// for _, SeciliHamle := range Hamleler {
+	// 	HamleSecimler = append(HamleSecimler, SeciliHamle.isim)
+	// }
 
-	var girdi string
+	// var girdi string
+	print(OyunModları)
 	// fmt.Println("Birinci taşınızı girin (taş, kağıt, makas):")
-	// fmt.Scan(&tas1)
+	// fmt.Scan(&Hamle1)
 	// fmt.Println("İkinci taşınızı girin (taş, kağıt, makas):")
-	// fmt.Scan(&tas2)
-	for {
-		fmt.Println("**************************")
-		fmt.Println("Seçenekler:", TasSecimler) // Virgülde Go, otomatik boşluk bırakıyor.
-		fmt.Println("Hamlenizi yapın:")
-		// fmt.Scan(&(strings.ToLower(girdi)))
-		fmt.Scan(&girdi)
-		var TasVarMi bool
-		for _, SeciliTasIsmi := range TasSecimler {
-			if girdi == SeciliTasIsmi {
-				TasVarMi = true
-				break
-			}
-		}
-		if TasVarMi {
-			sonuc := Karsilasma(strings.ToLower(girdi), "makas")
-			fmt.Println("Sonuç: ", sonuc)
-		} else {
-			fmt.Println("Geçersiz taş ismi girdiniz.")
-		}
-	}
+	// fmt.Scan(&Hamle2)
+	// for {
+	// 	fmt.Println("**************************")
+	// 	fmt.Println("Seçenekler:", HamleSecimler) // Virgülde Go, otomatik boşluk bırakıyor.
+	// 	fmt.Print("Hamlenizi yapın: ")
+	// 	// fmt.Scan(&(strings.ToLower(girdi)))
+	// 	fmt.Scanf("%s", &girdi)
+	// 	var HamleVarMi bool
+	// 	for _, SeciliHamleIsmi := range HamleSecimler {
+	// 		if girdi == SeciliHamleIsmi {
+	// 			HamleVarMi = true
+	// 			break
+	// 		}
+	// 	}
+	// 	if HamleVarMi {
+	// 		robotHamlesi := HamleSecimler[rand.Intn(len(HamleSecimler))]
+	// 		sonuc := Karsilasma(strings.ToLower(girdi), robotHamlesi)
+	// 		fmt.Println(girdi, " <--")
+	// 		fmt.Println("Robotun Hamlesi:", robotHamlesi, " <--")
+	// 		fmt.Println("Sonuç: ", sonuc)
+	// 	} else {
+	// 		fmt.Println("Geçersiz taş ismi girdiniz.")
+	// 	}
+	// }
 }
