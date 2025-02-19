@@ -4,6 +4,7 @@ import { eventAdded_hamleSureci, turuncuRGB} from "../script.js";
 import { fareAyrildi, fareUstunde } from "./fare.js";
 import { kontrol } from "./kontrol.js";
 import { tasAdi } from "./tasAdi.js";
+import { hamleKayit } from "./hamleKayitIslemi.js";
 
 export let hamleSecildi;hamleSecildi = false;
 
@@ -57,6 +58,7 @@ export function hamleYapim() {
                     sira?_beyazKisaRok=false:_siyahKisaRok=false;
                 }
             }
+            hamleKayit(tasAdi(secili.firstChild),this.id)
             this.hasChildNodes()?
             this.replaceChild(secili.firstChild,this.firstChild):
             this.appendChild(secili.firstChild);

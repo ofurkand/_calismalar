@@ -2,9 +2,10 @@ import { yerlestir } from './lib/yerlestir.js';
 import { hamleSirasi,hamleYapim} from './lib/hamle.js';
 import { secimTemizle } from './lib/secimTemizle.js';
 import { fareAyrildi,fareUstunde } from './lib/fare.js';
+export const verilerURL = "_kaynakca/veriler.json";
+
 
 export const tahta = document.getElementById("satrancTahtasi");
-export const verilerURL = "_kaynakca/veriler.json";
 export const turuncuRGB ="rgb(255, 165, 0)";
 
 let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
