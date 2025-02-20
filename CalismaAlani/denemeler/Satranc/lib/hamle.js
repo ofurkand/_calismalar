@@ -40,7 +40,8 @@ export function hamleYapim() {
             let secili = (Array.from(document.getElementsByClassName('kare')).filter(element => {
                 return getComputedStyle(element).backgroundColor === turuncuRGB;
             }))[0];
-            if (tasAdi(secili.firstChild) === "sah") {
+            console.log(secili);
+            if (tasAdi(secili.firstChild) === "Sah") {
                 if(Math.abs(notasyon.indexOf(this.id.split('')[0])-notasyon.indexOf(secili.id.split('')[0]))>1){
                     rokSifirla();
                     Math.abs(notasyon.indexOf(this.id.split('')[0])-8)<Math.abs(notasyon.indexOf(this.id.split('')[0])-1) ?
@@ -50,7 +51,7 @@ export function hamleYapim() {
                         .appendChild(document.getElementById(sira?"A1":"A8").firstChild);
                 }
             }
-            if (tasAdi(secili.firstChild) === "kale") {
+            if (tasAdi(secili.firstChild) === "Kale") {
                 if(secili.id.split('')[0] === "A" && (sira?_beyazUzunRok:_siyahUzunRok)){
                     sira?_beyazUzunRok=false:_siyahUzunRok=false;
                 }

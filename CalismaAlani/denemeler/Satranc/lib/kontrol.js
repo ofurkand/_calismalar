@@ -6,7 +6,7 @@ export function kontrol(secili){
     let i = notasyon.indexOf(konumArr[0]);
     let cnt = 0;
         switch (secilen) {
-            case "sah":
+            case "Sah":
                 // sağa
                 if(!(notasyon[i] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
@@ -150,7 +150,7 @@ export function kontrol(secili){
                 }
 
                 break;
-            case "vezir":
+            case "Vezir":
                 // sağa
                 while(!(notasyon[i] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
@@ -269,7 +269,7 @@ export function kontrol(secili){
                     cnt++;
                 }
                 break;
-            case "fil":
+            case "Fil":
                 // sol aşağı
                 while(!((Number(konumArr[1])-cnt === 1)||(notasyon[i-cnt] === "A"))){
                     if (document.getElementById(`${notasyon[i-1-cnt]}${Number(konumArr[1])-1-cnt}`).hasChildNodes()) {
@@ -329,7 +329,7 @@ export function kontrol(secili){
                     cnt++;
                 }
                 break;
-            case "at":
+            case "At":
                 // üst sol
                 if((Number(konumArr[1]) < 7)&&!(konumArr[0] === "A")){
                     if (document.getElementById(`${notasyon[i-1]}${Number(konumArr[1])+2}`).hasChildNodes()) {
@@ -419,7 +419,7 @@ export function kontrol(secili){
                     }
                 }
                 break;
-            case "kale":
+            case "Kale":
                 // sağa
                 while(!(notasyon[i] === "H")){
                     if (document.getElementById(`${notasyon[i+1]}${konumArr[1]}`).hasChildNodes()) {
@@ -478,7 +478,7 @@ export function kontrol(secili){
                     cnt++;
                 }
                 break;
-            case "piyon":
+            case "Piyon":
                 // normal hareket
                 if (!(document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).hasChildNodes())) {
                     document.getElementById(`${notasyon[i]}${(sira?Number(konumArr[1])+1:Number(konumArr[1])-1)}`).style.backgroundColor="darkblue";

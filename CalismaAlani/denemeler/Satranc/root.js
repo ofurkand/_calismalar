@@ -5,12 +5,15 @@ const hamleKayitYeri = document.getElementById("pgn")
 
 let _oyunAktifligi = false;
 let _sira = true;
-let _siyahKisaRok = true;
-let _siyahUzunRok = true;
-let _beyazUzunRok = true;
-let _beyazKisaRok = true;   
-let _taslar = [];
+let _siyahKisaRok = true; let _siyahUzunRok = true;
+let _beyazUzunRok = true; let _beyazKisaRok = true;   
+let _Taslar = [];
+let _Surumler = []; let _surum = "satranc";
 // let _tahtaYonu = false;
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 Object.defineProperty(window, 'sira', {
     get() {
@@ -32,13 +35,39 @@ Object.defineProperty(window, 'oyunAktifligi', {
     set(value) {
         _oyunAktifligi = value;
     }
-})
+});
 
-Object.defineProperty(window, 'taslar',{
+Object.defineProperty(window, 'Taslar',{
     get(){
-        return _taslar;
+        let donecekTaslar = new Map();
+        _Taslar.forEach(tas => {
+            // console.log(tas);
+            if (surum.icerilenTaslarKisaltmalari.includes(tas.kisaltma)) {
+                donecekTaslar.set(tas.kisaltma,tas);
+            }
+        });
+        // console.log(donecekTaslar);
+        return donecekTaslar;
     }
-})
+});
+
+Object.defineProperty(window, 'Surumler',{
+    get(){
+        return _Surumler[0]
+    },
+    set(veri){
+        _Surumler.push(veri);
+    }
+});
+
+Object.defineProperty(window, 'surum',{
+    get(){
+        return _Surumler[0][_surum];
+    },
+    set(veri){
+        _surum = veri;
+    }
+});
 
 class Tas{
     constructor(veri){
@@ -49,7 +78,7 @@ class Tas{
         this.taslaraEkle();
     }
     taslaraEkle(){
-        _taslar.push(this);
+        _Taslar.push(this);
     }
 }
 

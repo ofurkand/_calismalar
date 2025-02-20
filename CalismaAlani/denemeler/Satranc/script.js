@@ -3,12 +3,13 @@ import { hamleSirasi,hamleYapim} from './lib/hamle.js';
 import { secimTemizle } from './lib/secimTemizle.js';
 import { fareAyrildi,fareUstunde } from './lib/fare.js';
 export const verilerURL = "_kaynakca/veriler.json";
-
-
+await fetch(verilerURL)
+.then(response => response.json())
+.then(data => { data.taslar.map(tas => new Tas(tas));Surumler = data.surumler;});
 export const tahta = document.getElementById("satrancTahtasi");
 export const turuncuRGB ="rgb(255, 165, 0)";
 
-let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
+// let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
 
 for (let index = 1; index <= 64; index++) {
     let eklenecekKare = document.createElement('div')
@@ -19,7 +20,6 @@ for (let index = 1; index <= 64; index++) {
     eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
     tahta.appendChild(eklenecekKare);
 }
-
 
 export const eventAdded_hamleSureci = new Set();
 export const eventAdded_callback = new Set();
@@ -57,10 +57,8 @@ baslamaDugmesi.addEventListener("click", ()=>{
     sira=true;
     hamleSirasi(true);
     function rokAyarlari(){
-        _siyahKisaRok = true;
-        _siyahUzunRok = true;
-        _beyazUzunRok = true;
-        _beyazKisaRok = true;
+        _siyahKisaRok = true; _siyahUzunRok = true;
+        _beyazUzunRok = true; _beyazKisaRok = true;
     }
     rokAyarlari();
 });
@@ -80,13 +78,13 @@ sifirlamaDugmesi.addEventListener("click", ()=>{
         let eklenecekKare = document.createElement('div')
         eklenecekKare.classList.add('kare');
         index%8==1?sira:sira=!sira;sira?
-        eklenecekKare.classList.add('beyaz'):
-        eklenecekKare.classList.add('siyah');
+        eklenecekKare.classList.add('beyaz'): eklenecekKare.classList.add('siyah');
         eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
         tahta.appendChild(eklenecekKare);
     }
     secimTemizle();
     siraGostergesi.textContent = "";
-    yerlestir(baslangicKonumu);
+    hamleKayitYeri.textContent = "";
+    yerlestir(surum.baslangic_konumu);
 })
 
