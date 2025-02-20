@@ -5,7 +5,7 @@ export function kontrol(secili){
     let konumArr = secili.parentElement.id.split('');
     let i = notasyon.indexOf(konumArr[0]);
     let cnt = 0;
-        switch (secilen) {
+    switch (secilen) {
             case "Sah":
                 // sağa
                 if(!(notasyon[i] === "H")){
@@ -511,5 +511,5 @@ export function kontrol(secili){
                 break;
             default:
                 break;
-        }
+    }
 }

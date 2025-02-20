@@ -50,6 +50,9 @@ export function hamleYapim() {
                         document.getElementById(`${notasyon[notasyon.indexOf(this.id.split('')[0])+1]}${this.id.split('')[1]}`)
                         .appendChild(document.getElementById(sira?"A1":"A8").firstChild);
                 }
+                else{
+                    rokSifirla();
+                }
             }
             if (tasAdi(secili.firstChild) === "Kale") {
                 if(secili.id.split('')[0] === "A" && (sira?_beyazUzunRok:_siyahUzunRok)){
