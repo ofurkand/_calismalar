@@ -1,7 +1,10 @@
 const siraGostergesi = document.getElementById("sira");
 const baslamaDugmesi = document.getElementById("oyun");
 const sifirlamaDugmesi = document.getElementById("sifirla");
-const hamleKayitYeri = document.getElementById("pgn")
+const hamleKayitYeri = document.getElementById("pgn");
+const tahta = document.getElementById("satrancTahtasi");
+window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
+    "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 let _oyunAktifligi = false;
 let _sira = true;
@@ -98,6 +101,3 @@ class Tas{
 //         }
 //     }
 // });
-
-window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
-    "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];

@@ -6,7 +6,7 @@ export const verilerURL = "_kaynakca/veriler.json";
 await fetch(verilerURL)
 .then(response => response.json())
 .then(data => { data.taslar.map(tas => new Tas(tas));Surumler = data.surumler;});
-export const tahta = document.getElementById("satrancTahtasi");
+// export const tahta = document.getElementById("satrancTahtasi");
 export const turuncuRGB ="rgb(255, 165, 0)";
 
 // let baslangicKonumu=["rnbqkbnr","pppppppp","8","8","8","8","PPPPPPPP","RNBQKBNR"].reverse();
