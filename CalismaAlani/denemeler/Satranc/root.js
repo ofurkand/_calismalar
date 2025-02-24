@@ -3,8 +3,14 @@ const baslamaDugmesi = document.getElementById("oyun");
 const sifirlamaDugmesi = document.getElementById("sifirla");
 const hamleKayitYeri = document.getElementById("pgn");
 const tahta = document.getElementById("satrancTahtasi");
+const verilerURL = "_kaynakca/veriler.json";
 window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
     "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+window.oyunKonum = [];
+
+/*await*/ fetch(verilerURL)
+.then(response => response.json())
+.then(data => { data.taslar.map(tas => new Tas(tas));Surumler = data.surumler;});
 
 let _oyunAktifligi = false;
 let _sira = true;
@@ -99,5 +105,16 @@ class Tas{
 //             // Ters yön
 //             tahta.style.transform = "rotate(180deg)";
 //         }
+//     }
+// });
+
+// Güncelleme Eklentileri:
+// window.tahtaGuncellemeVersiyonu = 0;
+// Object.defineProperty(window, 'surum',{
+//     get(){
+//         if (tahtaGuncellemeVersiyonu === ) {
+            
+//         }
+//         return _Surumler[0][_surum];
 //     }
 // });

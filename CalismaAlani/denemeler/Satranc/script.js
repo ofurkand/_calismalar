@@ -2,10 +2,10 @@ import { yerlestir } from './lib/yerlestir.js';
 import { hamleSirasi,hamleYapim} from './lib/hamle.js';
 import { secimTemizle } from './lib/secimTemizle.js';
 import { fareAyrildi,fareUstunde } from './lib/fare.js';
-export const verilerURL = "_kaynakca/veriler.json";
-await fetch(verilerURL)
-.then(response => response.json())
-.then(data => { data.taslar.map(tas => new Tas(tas));Surumler = data.surumler;});
+// export const verilerURL = "_kaynakca/veriler.json";
+// await fetch(verilerURL)
+// .then(response => response.json())
+// .then(data => { data.taslar.map(tas => new Tas(tas));Surumler = data.surumler;});
 // export const tahta = document.getElementById("satrancTahtasi");
 export const turuncuRGB ="rgb(255, 165, 0)";
 
@@ -86,5 +86,5 @@ sifirlamaDugmesi.addEventListener("click", ()=>{
     siraGostergesi.textContent = "";
     hamleKayitYeri.textContent = "";
     yerlestir(surum.baslangic_konumu);
-})
+});
 
