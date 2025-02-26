@@ -11,8 +11,8 @@ type Tas struct {
 	ustunluk []string // veriler {} içine yazılacak.
 }
 
-func (t *Tas) Kontrol(id unint8) bool {
-	return slices.Contains(t1.ustunluk, id)
+func (t *Tas) Kontrol(id uint8) bool {
+	return slices.Contains(t.ustunluk, id)
 }
 
 type OyunModu struct {
