@@ -1,5 +1,5 @@
-import { secimTemizle } from './lib/secimTemizle.js';
-import { yerlestir } from './lib/yerlestir.js';
+import { secimTemizle } from '../../lib/secimTemizle.js';
+import { yerlestir } from '../../lib/yerlestir.js';
 
 baslamaDugmesi.addEventListener("click", ()=>{
     oyunAktifligi = true;

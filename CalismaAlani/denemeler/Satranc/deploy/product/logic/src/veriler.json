@@ -1,0 +1,72 @@
+{
+    "taslar":[
+        {
+            "isim": "Sah",
+            "resimURL": "taslar/sah.svg",
+            "kisaltma":"k",
+            "deger": 999
+        },
+        {
+            "isim": "At",
+            "resimURL": "taslar/at.svg",
+            "kisaltma":"n",
+            "deger": 3
+        },
+        {
+            "isim": "Fil",
+            "resimURL": "taslar/fil.svg",
+            "kisaltma":"b",
+            "deger": 3
+        },
+        {
+            "isim": "Kale",
+            "resimURL": "taslar/kale.svg",
+            "kisaltma":"r",
+            "deger": 5
+        },
+        {
+            "isim": "Piyon",
+            "kisaltma": "p",
+            "resimURL": "taslar/piyon.svg",
+            "deger": 1
+        },
+        {
+            "isim": "Vezir",
+            "kisaltma": "q",
+            "resimURL": "taslar/vezir.svg",
+            "deger": 9
+        },
+        {
+            "isim": "Deve",
+            "kisaltma": "j",
+            "resimURL": "taslar/deve.svg",
+            "deger": 4
+        },
+        {
+            "isim": "Savaş Motoru",
+            "kisaltma": "d",
+            "resimURL": "taslar/savas-motoru.svg",
+            "deger": 3
+        }
+    ],
+    "surumler":{
+        "satranc":{
+            "baslangic_konumu":["RNBQKBNR","PPPPPPPP","8","8","8","8","pppppppp","rnbqkbnr"],
+            "icerilenTaslarKisaltmalari":["k","n","b","r","p","q"],
+            "oyunAlani": {
+                "x":8,
+                "y":8,
+                "-":[]
+            }
+        },
+        "timur-satranci":{
+            "baslangic_konumu":["8","8","8","8","rnbqkbnr","pppppppp"],
+            "icerilenTaslarKisaltmalari":["k","n","b","r","p","q"],
+            "oyunAlani": {
+                "x":13,
+                "y":10,
+                "-":[[11,[3,10]]]
+            }
+        }
+    }
+}
