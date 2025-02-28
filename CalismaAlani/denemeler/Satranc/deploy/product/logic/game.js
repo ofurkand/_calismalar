@@ -1,11 +1,15 @@
 "use strict";
 export class Game {
     constructor(target){
-        root.area=target;
-        console.log(root.area);
-        this.connectToTarget(target);
-        // this.clearAll(target);
-        // this.styleSheet(target);
+        window.TotalGameCountForIdDistrubition = document.getElementsByClassName(target);
+        // Oyun İçin Oluşturulan Alan Adı
+        const oyun = `Game${}`;
+
+        window[oyun] = {};
+        window[oyun].root = {};
+        window[oyun].root.gameTarget = document.getElementById(target);
+        // console.log(window[oioaa], window.Game1); // Başarılı
+
     }
 
     styleSheet(target){
