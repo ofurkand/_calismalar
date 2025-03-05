@@ -6,16 +6,17 @@
     <title>Satranç</title>
     <style>
         :root{
-    --kare-genislik: 100px;
-    --kare-sayisi: 8;
-}
+            --kare-genislik: 100px;
+            --kare-sayisi-x: 8;
+            --kare-sayisi-y: 8;
+        }
         .writeHereYourGameClassName{
             /* width: 500px;
             height: 500px;
             border: black solid 2px; */
             display: grid;
-            grid-template-columns: repeat(var(--kare-sayisi), var(--kare-genislik)); /* sütun */
-            grid-template-rows: repeat(var(--kare-sayisi), var(--kare-genislik));   /* satır */
+            grid-template-columns: repeat(var(--kare-sayisi-x), var(--kare-genislik)); /* sütun */
+            grid-template-rows: repeat(var(--kare-sayisi-y), var(--kare-genislik));   /* satır */
             width: calc(var(--kare-genislik))*var(--kare-sayisi);
             height: calc(var(--kare-genislik))*var(--kare-sayisi);
             border: 1px solid #a6a2a2;
@@ -26,6 +27,9 @@
 }
 .beyaz {
     background-color: #a6a2a2;
+}
+.secili {
+    background-color: yellow;
 }
 
 img{
