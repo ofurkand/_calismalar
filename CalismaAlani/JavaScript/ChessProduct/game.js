@@ -105,31 +105,50 @@ class Game {
         // }
 
         let emptySquares = surum.oyunAlani["-"];
-        console.log('emptySquares :>> ', emptySquares);
+        console.log('emptySquares :>> ', emptySquares.classic);
         let emptySquareInRow;
         for (let indexY = 1; indexY <= surum.oyunAlani.y; indexY++) {
             // console.log(indexX);
+            indexY%2==1?sira=false:sira=true;
+            emptySquareInRow = 0;
             for (let indexX = 1; indexX <= surum.oyunAlani.x; indexX++) {
-                emptySquareInRow = 0;
-                if (emptySquares.includes([indexX-1,indexY-1])) {
-                    emptySquareInRow++;
-                }
+                sira = !sira;
                 let eklenecekKare = document.createElement('div');
+                // console.log(Object.keys(emptySquares.advanced));
+                // if (emptySquares.classic.some(item => JSON.stringify(item) === JSON.stringify([indexX-1,surum.oyunAlani.y-indexY]))) {
+                if (Object.keys(emptySquares.advanced).includes((indexX-1).toString())) {
+                    emptySquareInRow+=1;
+                    if (emptySquares.classic.some(item => JSON.stringify(item) === JSON.stringify([indexX-1,surum.oyunAlani.y-indexY]))) {
+                        eklenecekKare.className = "deleted";  
+                    }
+                    else{
+                        eklenecekKare.classList.add('kare');
+                        eklenecekKare.classList.add("extra");
+                        eklenecekKare.id=`_${document.getElementsByClassName("extra").length+1}`;
+                        eklenecekKare.addEventListener("click", this.squareListener);
+                    }
+                    this.htmlElement.appendChild(eklenecekKare);
+                    continue
+                }
                 eklenecekKare.classList.add('kare');
-                (indexX)%indexX==1?sira:sira=!sira;sira?
+                // (indexX)%indexX==1?sira:sira=!sira;sira?
+                !sira?
                 eklenecekKare.classList.add('siyah'): eklenecekKare.classList.add('beyaz');
                 // eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
-                eklenecekKare.id=`${notasyon[indexX-1]}${surum.oyunAlani.y-indexY+1}`;
-                console.log(indexX,indexY);
-                eklenecekKare.addEventListener("click", this.squareListener);
-                this.htmlElement.appendChild(eklenecekKare);   
+                eklenecekKare.id=`${notasyon[indexX-1-emptySquareInRow]}${surum.oyunAlani.y-indexY+1}`;
+                // console.log(indexX,indexY);
+                this.htmlElement.appendChild(eklenecekKare);
+                eklenecekKare.addEventListener("click", this.squareListener);   
             }
         }
         console.log(surum.baslangic_konumu);
         // this.konum = surum
     }
     
-    gameRefresher(konum){
+    gameFEN(konum){
+        if (konum === null) {
+            konum = surum.baslangic_konumu;
+        }
         
     }
 

@@ -1,5 +1,5 @@
 const tahta = document.getElementById("satrancTahtasi");
-const verilerURL = "_kaynakca/veriler.json";
+const verilerURL = "../eskiVeriler.json";
 let resimDosyaTurleri = ["img","object"];
 const gecerliResimDosyaTuru = resimDosyaTurleri[0];
 const siraGostergesi = document.getElementById("sira");
