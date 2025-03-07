@@ -84,7 +84,8 @@
             }
         },
         "timur-satranci":{
-            "baslangic_konumu":["b1j1d1d1j1b","rm","13","13","13","13","13","13","13","13"],
+            "baslangic_konumu":["b1j1d1d1j1b",
+            "rm","13","13","13","13","13","13","13","13"],
             "icerilenTaslarKisaltmalari":["k","m","b","r","p","q","d","j","z","g","x"],
             "oyunAlani": {
                 "x":13,

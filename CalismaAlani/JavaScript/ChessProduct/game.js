@@ -123,7 +123,7 @@ class Game {
                     }
                     else{
                         eklenecekKare.classList.add('kare');
-                        eklenecekKare.classList.add("extra");
+                        eklenecekKare.classList.add("saray");
                         eklenecekKare.id=`_${document.getElementsByClassName("extra").length+1}`;
                         eklenecekKare.addEventListener("click", this.squareListener);
                     }
@@ -148,6 +148,7 @@ class Game {
     gameFEN(konum){
         if (konum === null) {
             konum = surum.baslangic_konumu;
+                
         }
         
     }
