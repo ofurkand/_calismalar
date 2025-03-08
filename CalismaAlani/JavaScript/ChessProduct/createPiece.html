@@ -17,6 +17,7 @@
         .contents{
             display: flex;
             gap: 2vw;
+            flex-flow: column;
         }
         .area{
             display: grid;
@@ -28,8 +29,16 @@
             /* background-color: goldenrod; */
         }
         input{
-            width: 5vw;
+            min-width: 5vw;
+            max-width: 20vw;
             height: 5vh;
+        }
+        img{
+            object-fit: contain;
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            /* width: 40px; */
         }
         .kare {
             width: var(--kare-genislik);
@@ -50,11 +59,11 @@
         .secili {
             background-color: yellow;
         }
-        .deleted{
+        /* .deleted{
             cursor: default;
             border: none;
             background: transparent;
-        }
+        } */
         pre{
             font-size: 1rem;
         }
@@ -62,23 +71,33 @@
     </style>
 </head>
 <body>
-    <div class="contents">
-        <div><label for="x-ekseni">X: </label><input name="x-ekseni" type="number" min="1" value="8"></div>
-        <div><label for="y-ekseni">Y: </label><input name="y-ekseni" type="number" min="1" value="8"></div>
-        <div><input type="checkbox" id="duzgun-cokgen" checked disabled>Kare</div>
-        <button id="save">Save</button>
+    <div style="display: flex;">
+        <div class="area"></div>    
+        <div class="contents">
+            <!-- <div><input type="file" id="resim" style="width: auto;max-width: 14vw; "> </div>-->
+            <div><input type="file" id="resim"></div>
+            <div><input type="checkbox" id="tek-capraz">Tek-Çapraz</div>
+            <div><input type="checkbox" id="tek-duz">Tek-Düz</div>
+            <div><input type="checkbox" id="capraz">Çapraz</div>
+            <div><input type="checkbox" id="duz">Düz</div>
+            <div><input type="checkbox" id="L-sekli">L Şekli</div>
+            <div><input type="checkbox" id="L-sekli">Atlatma</div>
+            <button id="save">Save</button>
+        </div>
     </div>
     
-    <div class="area"></div>
 
-    <pre>Click the "Save" button whenever you've done with the area adjustments.</pre>
+    <pre>Click the "Save" button whenever you've done with the piece adjustments.</pre>
 
     <script>
+        const ornekResim = "./product/logic/src/taslar/aslan.svg";
         window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
         "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         const root = document.documentElement;
-        const x = document.getElementsByTagName("input")[0];
-        const y = document.getElementsByTagName("input")[1];
+        // const x = document.getElementsByTagName("input")[0];
+        // const y = document.getElementsByTagName("input")[1];
+        const x = {value: 9};
+        const y = {value: 9};
         // const z = document.getElementById("duzgun-cokgen");
         let emptyAreas = [];
         const btn = document.getElementById("save");
@@ -108,25 +127,37 @@
                     eklenecekKare.classList.add('siyah'): eklenecekKare.classList.add('beyaz');
                     // eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
                     eklenecekKare.id=`${notasyon[indexX-1]}${y.value-indexY+1}`;
-                    eklenecekKare.addEventListener("click", this.squareToggle);
+                    if (eklenecekKare.id == "E5") {
+                        eklenecekKare.addEventListener("click", this.squareToggle);
+                    }
                     document.getElementsByClassName("area")[0].appendChild(eklenecekKare);   
                     sira = !sira;
                 }
             }
         }
+
+        let ornekRsm = document.createElement("img");
+        ornekRsm.setAttribute("src",ornekResim);
+        document.getElementById("E5").appendChild(ornekRsm);
+        // ornekRsm.addEventListener("click",tasTiklandi);
+
+        // function tasTiklandi(){
+        //     let bulunduguKare = document.getElementById(this.parentElement.id);
+        //     bulunduguKare.style.backgroundColor = "yellow";
+        // }
         function squareToggle() {
             // !emptyAreas.includes([[notasyon.indexOf(this.id.split("")[0]),parseInt(this.id.split("")[1])]]) ?
-            emptyAreas.push([notasyon.indexOf(this.id.split("")[0]),parseInt(this.id.split("")[1])-1]);
+            // emptyAreas.push([notasyon.indexOf(this.id.split("")[0]),parseInt(this.id.split("")[1])-1]);
             // : null;
-            if (this.className = 'delete'){
-                this.classList.remove('delete');
-                // this.classList.add('kare');
-            }else{
-                this.classList.add = 'delete';
-            }
+            // if (this.className = 'delete'){
+            //     this.classList.remove('delete');
+            //     // this.classList.add('kare');
+            // }else{
+            //     this.classList.add = 'delete';
+            // }
+            this.style.backgroundColor = ((a) => !a ? "yellow" : "red")(this.style.backgroundColor === "yellow");
         }
-        x.addEventListener("input", handleValueChange);
-        y.addEventListener("input", handleValueChange);
+
         btn.addEventListener("click",()=>{
             document.getElementsByTagName("pre")[0].style.backgroundColor="#D2B48C";
             console.log(emptyAreas);
@@ -136,10 +167,6 @@
                     
             //     }
             // }
-            
-            let control = [emptyAreas.filter(([x, y]) => x === x.value),emptyAreas.filter(([x, y]) => y === y.value)];
-            console.log(control);
-
             document.getElementsByTagName("pre")[0].textContent=
             `"oyunAlani": {
                 "x": ${x.value},
