@@ -76,12 +76,12 @@
         <div class="contents">
             <!-- <div><input type="file" id="resim" style="width: auto;max-width: 14vw; "> </div>-->
             <div><input type="file" id="resim"></div>
-            <div><input type="checkbox" id="tek-capraz">Tek-Çapraz</div>
-            <div><input type="checkbox" id="tek-duz">Tek-Düz</div>
-            <div><input type="checkbox" id="capraz">Çapraz</div>
-            <div><input type="checkbox" id="duz">Düz</div>
-            <div><input type="checkbox" id="L-sekli">L Şekli</div>
-            <div><input type="checkbox" id="L-sekli">Atlatma</div>
+            <div><input type="checkbox" id="tek-capraz" disabled>Tek-Çapraz</div>
+            <div><input type="checkbox" id="tek-duz" disabled>Tek-Düz</div>
+            <div><input type="checkbox" id="capraz" >Çapraz</div>
+            <div><input type="checkbox" id="duz" disabled>Düz</div>
+            <div><input type="checkbox" id="L-sekli" disabled>L Şekli</div>
+            <div><input type="checkbox" id="L-sekli" disabled>Atlatma</div>
             <button id="save">Save</button>
         </div>
     </div>
@@ -96,8 +96,8 @@
         const root = document.documentElement;
         // const x = document.getElementsByTagName("input")[0];
         // const y = document.getElementsByTagName("input")[1];
-        const x = {value: 9};
-        const y = {value: 9};
+        const x = {value: 11};
+        const y = {value: 11};
         // const z = document.getElementById("duzgun-cokgen");
         let emptyAreas = [];
         const btn = document.getElementById("save");
@@ -127,7 +127,7 @@
                     eklenecekKare.classList.add('siyah'): eklenecekKare.classList.add('beyaz');
                     // eklenecekKare.id=`${notasyon[(index-1)%8]}${Math.abs(64-((index-1)-((index-1)%8)))/8}`;
                     eklenecekKare.id=`${notasyon[indexX-1]}${y.value-indexY+1}`;
-                    if (eklenecekKare.id == "E5") {
+                    if (eklenecekKare.id == "F6") {
                         eklenecekKare.addEventListener("click", this.squareToggle);
                     }
                     document.getElementsByClassName("area")[0].appendChild(eklenecekKare);   
@@ -138,7 +138,7 @@
 
         let ornekRsm = document.createElement("img");
         ornekRsm.setAttribute("src",ornekResim);
-        document.getElementById("E5").appendChild(ornekRsm);
+        document.getElementById("F6").appendChild(ornekRsm);
         // ornekRsm.addEventListener("click",tasTiklandi);
 
         // function tasTiklandi(){
