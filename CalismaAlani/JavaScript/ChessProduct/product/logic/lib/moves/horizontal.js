@@ -1,11 +1,11 @@
-export function bottomLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
+export function left(pieceArrayCoord,solvedFEN,turn = true,limit) {
 
     let cnt = 1;
     let possibleMoves = [];
 
     while(solvedFEN[parseInt(pieceArrayCoord[0])-cnt] !== undefined){
-        if (solvedFEN[parseInt(pieceArrayCoord[0])-cnt][parseInt(pieceArrayCoord[1])-cnt] === null) {
-            possibleMoves.push([[parseInt(pieceArrayCoord[0])-cnt],[parseInt(pieceArrayCoord[1])-cnt]]);
+        if (solvedFEN[parseInt(pieceArrayCoord[0])-cnt][parseInt(pieceArrayCoord[1])] === null) {
+            possibleMoves.push([[parseInt(pieceArrayCoord[0])-cnt],[parseInt(pieceArrayCoord[1])]]);
             // console.log(possibleMoves[possibleMoves.length-1]);
         }else{
 
@@ -20,14 +20,14 @@ export function bottomLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
     return possibleMoves
 }
 
-export function bottomRight(pieceArrayCoord,solvedFEN,turn = true,limit) {
+export function right(pieceArrayCoord,solvedFEN,turn = true,limit) {
 
     let cnt = 1;
     let possibleMoves = [];
 
     while(solvedFEN[parseInt(pieceArrayCoord[0])+cnt] !== undefined){
-        if (solvedFEN[parseInt(pieceArrayCoord[0])+cnt][parseInt(pieceArrayCoord[1])-cnt] === null) {
-            possibleMoves.push([[parseInt(pieceArrayCoord[0])+cnt],[parseInt(pieceArrayCoord[1])-cnt]]);
+        if (solvedFEN[parseInt(pieceArrayCoord[0])+cnt][parseInt(pieceArrayCoord[1])] === null) {
+            possibleMoves.push([[parseInt(pieceArrayCoord[0])+cnt],[parseInt(pieceArrayCoord[1])]]);
             // console.log(possibleMoves[possibleMoves.length-1]);
         }else{
 
@@ -42,14 +42,14 @@ export function bottomRight(pieceArrayCoord,solvedFEN,turn = true,limit) {
     return possibleMoves
 }
 
-export function topLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
+export function upward(pieceArrayCoord,solvedFEN,turn = true,limit) {
 
     let cnt = 1;
     let possibleMoves = [];
 
-    while(solvedFEN[parseInt(pieceArrayCoord[0])-cnt] !== undefined){
-        if (solvedFEN[parseInt(pieceArrayCoord[0])-cnt][parseInt(pieceArrayCoord[1])+cnt] === null) {
-            possibleMoves.push([[parseInt(pieceArrayCoord[0])-cnt],[parseInt(pieceArrayCoord[1])+cnt]]);
+    while(solvedFEN[parseInt(pieceArrayCoord[1])+cnt] !== undefined){
+        if (solvedFEN[parseInt(pieceArrayCoord[0])][parseInt(pieceArrayCoord[1])+cnt] === null) {
+            possibleMoves.push([[parseInt(pieceArrayCoord[0])],[parseInt(pieceArrayCoord[1])+cnt]]);
             // console.log(possibleMoves[possibleMoves.length-1]);
         }else{
 
@@ -64,14 +64,14 @@ export function topLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
     return possibleMoves
 }
 
-export function topRight(pieceArrayCoord,solvedFEN,turn = true,limit) {
+export function downward(pieceArrayCoord,solvedFEN,turn = true,limit) {
 
     let cnt = 1;
     let possibleMoves = [];
 
-    while(solvedFEN[parseInt(pieceArrayCoord[0])+cnt] !== undefined){
-        if (solvedFEN[parseInt(pieceArrayCoord[0])+cnt][parseInt(pieceArrayCoord[1])+cnt] === null) {
-            possibleMoves.push([[parseInt(pieceArrayCoord[0])+cnt],[parseInt(pieceArrayCoord[1])+cnt]]);
+    while(solvedFEN[parseInt(pieceArrayCoord[1])-cnt] !== undefined){
+        if (solvedFEN[parseInt(pieceArrayCoord[0])][parseInt(pieceArrayCoord[1])-cnt] === null) {
+            possibleMoves.push([[parseInt(pieceArrayCoord[0])],[parseInt(pieceArrayCoord[1])-cnt]]);
             // console.log(possibleMoves[possibleMoves.length-1]);
         }else{
 
