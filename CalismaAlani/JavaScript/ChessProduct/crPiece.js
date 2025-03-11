@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 import { topLeft,topRight,bottomLeft,bottomRight } from "./product/logic/lib/moves/diagonal.js";
 import { upward,downward,left,right } from "./product/logic/lib/moves/horizontal.js";
 
 // import {formatFEN} from "./product/logic/lib/convertToFEN.js";
+=======
+// import {formatFEN} from "./product/logic/lib/convertToFEN.js";
+import { topLeft } from "./product/logic/lib/moves/diagonal/topleft.js";
+import { topRight } from "./product/logic/lib/moves/diagonal/topright.js";
+import { bottomLeft } from "./product/logic/lib/moves/diagonal/bottomleft.js";
+import { bottomRight } from "./product/logic/lib/moves/diagonal/bottomright.js";
+>>>>>>> ece8759786b4d7a150a22d292b4de2cc93f4d750
 const ornekResim = "./product/logic/src/taslar/aslan.svg";
 window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
 "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const root = document.documentElement;
 const caprazCheckBox = document.getElementById("capraz");
+<<<<<<< HEAD
 const duzCheckBox = document.getElementById("duz");
+=======
+>>>>>>> ece8759786b4d7a150a22d292b4de2cc93f4d750
 let pieceCoord = "F6";
 let pieceArrayCoord = [notasyon.indexOf(pieceCoord.split("")[0]),pieceCoord.split("")[1]-1];
 // const x = document.getElementsByTagName("input")[0];
@@ -210,6 +221,7 @@ function diagonal(x,y){
     return [...new Set([possibleMoves.join().split(",")])][0];
 }
 
+<<<<<<< HEAD
 function horizontal(x,y){
     let possibleMoves = [];
     possibleMoves.push(left(x,y));
@@ -219,6 +231,8 @@ function horizontal(x,y){
     return [...new Set([possibleMoves.join().split(",")])][0];
 }
 
+=======
+>>>>>>> ece8759786b4d7a150a22d292b4de2cc93f4d750
 caprazCheckBox.addEventListener("click",()=>{
     let possibleMoves = diagonal(pieceArrayCoord,solveFEN());
     // console.log(possibleMoves);
@@ -234,6 +248,7 @@ caprazCheckBox.addEventListener("click",()=>{
     }
 });
 
+<<<<<<< HEAD
 duzCheckBox.addEventListener("click",()=>{
     let possibleMoves = horizontal(pieceArrayCoord,solveFEN());
     // console.log(possibleMoves);
@@ -249,6 +264,8 @@ duzCheckBox.addEventListener("click",()=>{
     }
 });
 
+=======
+>>>>>>> ece8759786b4d7a150a22d292b4de2cc93f4d750
 function hasNonDigit(input) { // ChatGPT
     return /\D/.test(input);
 }
