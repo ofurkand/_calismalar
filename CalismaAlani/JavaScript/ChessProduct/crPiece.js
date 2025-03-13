@@ -3,17 +3,19 @@ import { upward,downward,left,right } from "./product/logic/lib/moves/horizontal
 
 // import {formatFEN} from "./product/logic/lib/convertToFEN.js";
 const ornekResim = "./product/logic/src/taslar/aslan.svg";
+const ornekResim2 = "./product/logic/src/taslar/baykus.svg";
 window.notasyon = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
 "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const root = document.documentElement;
 const caprazCheckBox = document.getElementById("capraz");
 const duzCheckBox = document.getElementById("duz");
-let pieceCoord = "F6";
+let pieceCoord = "E9";
+let pieceCoord2 = "B9";
 let pieceArrayCoord = [notasyon.indexOf(pieceCoord.split("")[0]),pieceCoord.split("")[1]-1];
 // const x = document.getElementsByTagName("input")[0];
 // const y = document.getElementsByTagName("input")[1];
-const x = {value: 11};
-const y = {value: 11};
+const x = {value: 9};
+const y = {value: 9};
 // const z = document.getElementById("duzgun-cokgen");
 let emptyAreas = [];
 const btn = document.getElementById("save");
@@ -73,6 +75,10 @@ let ornekRsm = document.createElement("img");
 ornekRsm.setAttribute("src",ornekResim);
 ornekRsm.id = "x";
 document.getElementById(pieceCoord).appendChild(ornekRsm);
+let ornekRsm2 = document.createElement("img");
+ornekRsm2.setAttribute("src",ornekResim2);
+ornekRsm2.id = "X";
+document.getElementById(pieceCoord2).appendChild(ornekRsm2);
 let mainColorOfTheCenter = document.getElementById(pieceCoord).style.backgroundColor;
 
 // function handleValueChange() {
@@ -142,8 +148,10 @@ function calcFEN(){
 // console.log(calcFEN());
 
 function solveFEN(FEN = calcFEN()){
+    console.log(FEN);
     let _solvedFEN = [];
     let _tempFENline = [];
+    // debugger;
     FEN.forEach(element => {
         if (!hasNonDigit(element)){
             // (_tempFENline.push([""]))*parseInt(element);
@@ -158,19 +166,22 @@ function solveFEN(FEN = calcFEN()){
             //     }
             // });
             let element2 = element.split("");
+            // let total = 0;
             for (let index = 0; index < element2.length; index++) {
                 // if (parseInt(element2[index]) != NaN) {
                 if (!hasNonDigit(element2[index])) {
                     if (index > 0) {
                         // if (parseInt(element2[index-1]) != NaN) {
                         // }
-                        let cnt = 1; let total;
+                        let cnt = 1; let total = 0;
                         let sayi = parseInt(element2[index-cnt]);
-                        if (!hasNonDigit(sayi)) {
+                        if (sayi !== NaN ? !hasNonDigit(sayi) : false) {
                             _tempFENline.pop();
-                            while(sayi != NaN && sayi != undefined){
+                            // while(sayi !== NaN && sayi !== undefined){ // NaN kontrolü hatalıdır.
+                            while(!isNaN(sayi) && sayi !== undefined){
                                 total += 10**(cnt-1)*sayi;
                                 cnt+=1;
+                                sayi = parseInt(element2[index-cnt]);
                             }
                             _tempFENline.push(new Array(cnt).fill(null));
                             continue
@@ -190,6 +201,7 @@ function solveFEN(FEN = calcFEN()){
         _tempFENline = [];
     });
     // console.log(_solvedFEN);
+    console.log(_solvedFEN);
     return _solvedFEN;
 }
 // function formatFEN(moves,FEN,startPosition,gameArea){
@@ -207,7 +219,7 @@ function diagonal(x,y){
     possibleMoves.push(topRight(x,y));
     possibleMoves.push(bottomLeft(x,y));
     possibleMoves.push(bottomRight(x,y));
-    return [...new Set([possibleMoves.join().split(",")])][0];
+    return [...new Set([possibleMoves.join().split(",").filter(v=>v)])][0];
 }
 
 function horizontal(x,y){
@@ -216,36 +228,41 @@ function horizontal(x,y){
     possibleMoves.push(right(x,y));
     possibleMoves.push(upward(x,y));
     possibleMoves.push(downward(x,y));
-    return [...new Set([possibleMoves.join().split(",")])][0];
+    return [...new Set([possibleMoves.join().split(",").filter(v=>v)])][0];
 }
 
 caprazCheckBox.addEventListener("click",()=>{
     let possibleMoves = diagonal(pieceArrayCoord,solveFEN());
-    // console.log(possibleMoves);
-    if (caprazCheckBox.checked) {
-        possibleMoves.forEach(element => {
-            document.getElementById(element).classList.add("secili");
-        });                 
-    }
-    else{
-        possibleMoves.forEach(element => {
-            document.getElementById(element).classList.remove("secili");
-        });         
+    console.log(possibleMoves);
+    if (possibleMoves.length > 0) {
+        // console.log(possibleMoves);
+        if (caprazCheckBox.checked) {
+            possibleMoves.forEach(element => {
+                document.getElementById(element).classList.add("secili");
+            });                 
+        }
+        else{
+            possibleMoves.forEach(element => {
+                document.getElementById(element).classList.remove("secili");
+            });         
+        }
     }
 });
 
 duzCheckBox.addEventListener("click",()=>{
     let possibleMoves = horizontal(pieceArrayCoord,solveFEN());
-    // console.log(possibleMoves);
-    if (duzCheckBox.checked) {
-        possibleMoves.forEach(element => {
-            document.getElementById(element).classList.add("secili");
-        });                 
-    }
-    else{
-        possibleMoves.forEach(element => {
-            document.getElementById(element).classList.remove("secili");
-        });         
+    console.log(possibleMoves);
+    if (possibleMoves.length > 0) {
+        if (duzCheckBox.checked) {
+            possibleMoves.forEach(element => {
+                document.getElementById(element).classList.add("secili");
+            });                 
+        }
+        else{
+            possibleMoves.forEach(element => {
+                document.getElementById(element).classList.remove("secili");
+            });         
+        }
     }
 });
 

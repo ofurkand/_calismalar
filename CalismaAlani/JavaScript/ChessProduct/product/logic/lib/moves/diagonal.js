@@ -3,7 +3,9 @@ export function bottomLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
     let cnt = 1;
     let possibleMoves = [];
 
-    while(solvedFEN[parseInt(pieceArrayCoord[0])-cnt] !== undefined && (limit !== undefined ? limit >= cnt : true)){
+    while((solvedFEN[parseInt(pieceArrayCoord[0])-cnt] !== undefined) && (limit === undefined || limit >= cnt)){
+        console.log(solvedFEN[parseInt(pieceArrayCoord[0])-cnt]);
+        console.log([[parseInt(pieceArrayCoord[0])-cnt],[parseInt(pieceArrayCoord[1])-cnt]]);
         if (solvedFEN[parseInt(pieceArrayCoord[0])-cnt][parseInt(pieceArrayCoord[1])-cnt] === null) {
             possibleMoves.push([[parseInt(pieceArrayCoord[0])-cnt],[parseInt(pieceArrayCoord[1])-cnt]]);
             // console.log(possibleMoves[possibleMoves.length-1]);
@@ -13,7 +15,8 @@ export function bottomLeft(pieceArrayCoord,solvedFEN,turn = true,limit) {
 
         cnt++;
     }
-
+    
+    console.log(possibleMoves);
     possibleMoves = possibleMoves.map(move => {
         move = `${notasyon[parseInt(move[0])]}${parseInt(move[1])+1}`; return move
     });
