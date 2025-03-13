@@ -204,8 +204,8 @@ function solveFEN(FEN = calcFEN()){
 function diagonal(x,y){
     let possibleMoves = [];
     possibleMoves.push(topLeft(x,y));
-    possibleMoves.push(topRight(x,y,null,3));
-    possibleMoves.push(bottomLeft(x,y,null,1));
+    possibleMoves.push(topRight(x,y));
+    possibleMoves.push(bottomLeft(x,y));
     possibleMoves.push(bottomRight(x,y));
     return [...new Set([possibleMoves.join().split(",")])][0];
 }
@@ -213,7 +213,7 @@ function diagonal(x,y){
 function horizontal(x,y){
     let possibleMoves = [];
     possibleMoves.push(left(x,y));
-    possibleMoves.push(right(x,y,null,1));
+    possibleMoves.push(right(x,y));
     possibleMoves.push(upward(x,y));
     possibleMoves.push(downward(x,y));
     return [...new Set([possibleMoves.join().split(",")])][0];
