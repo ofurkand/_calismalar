@@ -5,7 +5,10 @@ html, body {
 }
 
 body {
-	color: #333;
+	/* color: #333; */
+	color: white;
+	background-color: #202142;
+	
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
@@ -60,4 +63,8 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+p{
+	color:gray;
 }
