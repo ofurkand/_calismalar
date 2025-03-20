@@ -11,14 +11,15 @@
 
 <main>
     <p>
-        Step: {formState.step +1}
+        Step: {formState.step + 1}
     </p>
 
-    {@render formStep({question:"whts yr nm", id:"name",type:"text"})}
+    <!-- {@render formStep({question:"whts yr nm", id:"name",type:"text"})} -->
 
     {#if formState.error}
         <p class="error">{formState.error}</p>
     {/if}
+
     {#if formState.step === 0}
     <div>
         <label for="name">Your Name</label>
@@ -29,7 +30,7 @@
             formState.step+=1;
             formState.error="";
         }else{
-            formState.error = "Your name is empty. Write your name."
+            formState.error = "Your name is empty. Write your name.";
         }
     }}>Kaydet</button>
     {:else if formState.step === 1}
@@ -52,16 +53,3 @@
         <!-- {/if} -->
     {/if}
 </main>
-
-{#snippet  formStep({question, id, type}:{
-    type: string;
-    id: string;
-    question: string;
-})}
-<article>
-    <div>
-        <label for={id}>{question}</label>
-        <input type={type} id={id} bind:value={formState[id]}/>
-    </div>
-</article>
-{/snippet}
