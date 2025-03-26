@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çöp Adam Çizme</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<!-- <canvas id="canvas" width="400" height="400"></canvas> -->
+<canvas id="canvas" width="450" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Çöp adam çizme fonksiyonu
+    // function drawStickFigure() {
+    //     // Baş (daire)
+    //     ctx.beginPath();
+    //     ctx.arc(200, 100, 30, 0, Math.PI * 2); // x, y, yarıçap, başlangıç açısı, bitiş açısı
+    //     ctx.stroke(); // Daireyi çiz
+
+    //     // Vücut (dikey çizgi)
+    //     ctx.beginPath();
+    //     ctx.moveTo(200, 130); // Başın altı
+    //     ctx.lineTo(200, 250); // Ayakların başlangıcı
+    //     ctx.stroke();
+
+    //     // Kollar (yanlara doğru çizgiler)
+    //     ctx.beginPath();
+    //     ctx.moveTo(200, 150); // Vücut başlangıcı
+    //     ctx.lineTo(130, 200); // Sol kol
+    //     ctx.moveTo(200, 150); // Vücut başlangıcı
+    //     ctx.lineTo(270, 200); // Sağ kol
+    //     ctx.stroke();
+
+    //     // Bacaklar (aşağıya doğru çizgiler)
+    //     ctx.beginPath();
+    //     ctx.moveTo(200, 250); // Vücut altı
+    //     ctx.lineTo(130, 300); // Sol bacak
+    //     ctx.moveTo(200, 250); // Vücut altı
+    //     ctx.lineTo(270, 300); // Sağ bacak
+    //     ctx.stroke();
+    // }
+    // Çöp adamı çiz
+    // drawStickFigure();
+
+    // Bayrak zeminini çiz
+    ctx.fillStyle = '#E30A17'; // Kırmızı renk
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Ay'ı çiz
+    ctx.beginPath();
+    ctx.arc(160, 200, 70, 0.3 * Math.PI, 1.7 * Math.PI); // Ayın çizilmesi
+    // ctx.lineTo(200, 200); // Ayın iç kısmını doldurmak için
+    ctx.fillStyle = 'white';
+    ctx.fill();
+
+    // Ay'ı kesmek için daire çiz
+    ctx.beginPath();
+    ctx.arc(180, 200, 60, 0, 2 * Math.PI); // Ayın içini kesmek için küçük bir daire
+    ctx.fillStyle = '#E30A17'; // Kırmızı renk
+    ctx.fill();
+
+    // Yıldızın çizilmesi
+    function drawStar(cx, cy, spikes, radius1, radius2) {
+        let rot = (Math.PI / 3) * 3;  // Başlangıç açısı
+        let step = Math.PI / spikes;  // Adım aralığı
+        let x = cx;
+        let y = cy
+        ctx.beginPath();
+        // ctx.moveTo(cx, cy - radius1); // Yıldızın üst kısmı
+
+        for (let i = 0; i < spikes; i++) {
+            x = cx + Math.cos(rot) * radius1;
+            y = cy + Math.sin(rot) * radius1;
+            ctx.lineTo(x, y);
+            rot += step;
+
+            x = cx + Math.cos(rot) * radius2;
+            y = cy + Math.sin(rot) * radius2;
+            ctx.lineTo(x, y);
+            rot += step;
+        }
+
+        // ctx.lineTo(cx, cy - radius1);
+        ctx.closePath();
+        ctx.fillStyle = 'white';
+        ctx.fill();  // Yıldızı beyaz renkle doldur
+    }
+
+    // Yıldızın merkezini ve büyüklüğünü ayarla
+    drawStar(255, 200, 5, 30, 13); // Yıldızın yeri, 5 köşe, dış ve iç yarıçap
+</script>
+
+</body>
+</html>
