@@ -1,0 +1,104 @@
+/* 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+} */
+
+/* .container{
+    width:100%;
+    min-height: calc(100vh - 10px * 2);
+    background: linear-gradient(135deg,#000000,#e4fd00);
+    padding:10px;
+} */
+
+/* .todo-app{
+    width:50%;
+    max-width:400px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+} */
+/* .row {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;
+    background: lightgray;
+    border-radius: 30px;
+    padding-left: 10px; 
+    margin-bottom: 25px;
+    width: 100%; 
+    max-width: 400px; 
+} */
+#input {
+    flex: 1; /* Input alanının esnemesini sağlar */
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-left: -10px;
+    padding: 15px;
+    font-size: 16px; /* font-weight yerine */
+    height: 45px;
+}
+
+button {
+    border-radius: 0 20px 20px 0; /* Tam köşe yuvarlatma için */
+    font-size: large;
+    background-color: lightblue;
+    color: blue;
+    cursor: pointer;
+    height: 45px;
+    width: 80px;
+    border: none; /* Kenar çizgilerini kaldırır */
+    transition: box-shadow 0.2s;
+}
+
+button:hover{
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+}
+
+button:active{
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+}
+
+ul {
+    display: flex;             
+    justify-content: center;   
+    /* align-items: left; */
+    flex-direction: column;       
+    padding: 0;                
+}
+
+ul li {
+    font-size: 17px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;             
+    align-items: center;       
+}
+
+hr{
+    margin: 20px 0 20px 0;
+}
+
+/* input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;    
+    transition: transform 1s, opacity 1s, accent-color 1s;
+    opacity: 0.3;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+input[type="checkbox"]:hover {
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+}
+
+input[type="checkbox"]:checked {
+    accent-color: blue;
+    opacity: 1;
+    transform: rotate(-360deg);
+} */
