@@ -4,8 +4,8 @@
     class Time {
     elapsed = $state(0);
     autoContinue = $state(true);
-    howOld = $state(0);
-    private intervalId: number | null = null;
+    timePassed = $state(0);
+    private intervalId: number | null = null; // ChatGPT
 
     constructor() {
       // Effect for autoContinue
@@ -13,7 +13,7 @@
             if (this.autoContinue) {
                 this.intervalId = setInterval(() => {
                 this.elapsed += 1;
-            }, 10);
+            }, 20);
             
             return () => {
                 if (this.intervalId) clearInterval(this.intervalId);
@@ -28,20 +28,19 @@
         $effect(() => {
             if (this.elapsed === 100) {
                 this.reset();
-                this.changeDay();
+                this.changeHalfDay();
             }
         });
 
-        // Effect for howOld changes
+        // Effect for timePassed changes
         $effect(() => {
-            console.log("Age updated:", this.howOld);
+            console.log("Age updated:", this.timePassed);
         });
         }
 
-        changeDay() {
-            this.howOld += 1;
+        changeHalfDay() {
+            this.timePassed += 0.5;
         }
-
         reset() {
             this.elapsed = 0;
         }
@@ -52,7 +51,7 @@
 </script>
 
 <progress value={timer.elapsed} max=100></progress>
-<span>{timer.howOld}</span>
+<span>{timer.timePassed}</span>
 
 <style>
 
