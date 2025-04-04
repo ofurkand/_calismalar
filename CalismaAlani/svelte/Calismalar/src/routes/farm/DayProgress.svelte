@@ -4,23 +4,26 @@
     class Time {
     elapsed = $state(0);
     autoContinue = $state(true);
+    isStarted = $state(true);
     timePassed = $state(0);
     private intervalId: number | null = null; // ChatGPT
 
     constructor() {
       // Effect for autoContinue
         $effect(() => {
-            if (this.autoContinue) {
-                this.intervalId = setInterval(() => {
-                this.elapsed += 1;
-            }, 20);
-            
-            return () => {
-                if (this.intervalId) clearInterval(this.intervalId);
-            };
-            } else if (this.intervalId) {
-                clearInterval(this.intervalId);
-                this.intervalId = null;
+            if (this.isStarted) {
+                if (this.autoContinue) {
+                    this.intervalId = setInterval(() => {
+                    this.elapsed += 1;
+                }, 20);
+                
+                return () => {
+                    if (this.intervalId) clearInterval(this.intervalId);
+                };
+                } else if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
             }
         });
 
@@ -44,10 +47,15 @@
         reset() {
             this.elapsed = 0;
         }
+        toggleActivity(){
+            this.isStarted = !this.isStarted;
+        }
     }
 
     // Example usage
     const timer = new Time();
+
+
 </script>
 
 <progress value={timer.elapsed} max=100></progress>

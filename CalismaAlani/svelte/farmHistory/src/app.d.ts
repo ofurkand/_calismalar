@@ -8,6 +8,13 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	type seed = {
+		id:string,
+		name:string,
+		color?:string,
+		growthRate:number, // 1
+		initialAge:number, // 0
+	}
 }
 
 export {};

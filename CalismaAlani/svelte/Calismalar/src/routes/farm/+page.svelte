@@ -1,12 +1,15 @@
 <script>
     import DayProgress from "./DayProgress.svelte";
+    import { farm } from "./farm.svelte";
     import PlantSeed from "./PlantSeed.svelte";
     import ProgressTime from "./ProgressTime.svelte";
     import Seeds from "./Seeds.svelte";
-
+    import Time from './Time.svelte';
 </script>
 <DayProgress></DayProgress>
 <ProgressTime></ProgressTime>
+<!-- <Time></Time> -->
+<button onclick={farm.toggleActivity()}>Durdur</button>
 <PlantSeed></PlantSeed>
 <div class="farm" style="margin-top: 50px;">
     <Seeds></Seeds>

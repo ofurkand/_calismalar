@@ -16,6 +16,6 @@ class Seed{
     // })
 }
 
-class Flower extends Seed{
-    constructor
-}
+// class Flower extends Seed{
+//     constructor
+// }
