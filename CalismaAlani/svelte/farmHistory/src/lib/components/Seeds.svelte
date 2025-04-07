@@ -1,12 +1,15 @@
 <script lang="ts">
-
+    import { initialSeeds } from "../../data/seeds";
     import Seed from "./Seed.svelte";
     export function accessToSeedsMarket() {
-        let allSeeds: seed[] = $state([
-            { id: "1", name: 'Gül', growthRate:1,initialAge:0},
-            { id: "2", name: 'Lale', growthRate:1,initialAge:0},
-            { id: "3", name: 'Menekşe', growthRate:1,initialAge:0},
-    ]);
+    //     let allSeeds: seed[] = $state([
+    //         { id: "1", name: 'Gül', growthRate:1,initialAge:0},
+    //         { id: "2", name: 'Lale', growthRate:1,initialAge:0},
+    //         { id: "3", name: 'Menekşe', growthRate:1,initialAge:0},
+    //         { id: "4", name: 'Yasemin', growthRate:2,initialAge:0},
+    // ]);
+
+    let allSeeds = $state([...initialSeeds]); // State olarak kopyalayabilirsiniz
 
     // type seed = {
     //   id:number,
@@ -50,5 +53,5 @@
 
 {#each seeds.allSeeds as theSeed}
 <!-- {console.log(theSeed)} -->
-    <Seed seedIn = {structuredClone(theSeed)}></Seed>
+    <Seed seedInfo = {theSeed}></Seed>
 {/each}

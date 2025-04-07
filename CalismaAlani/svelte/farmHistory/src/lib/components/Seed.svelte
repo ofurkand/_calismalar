@@ -1,10 +1,10 @@
 <script lang="ts">
-    export const seedIn:seed = $props();
-    console.log(seedIn);
+    export const seedInfo = $props();
+    let seed = seedInfo.seedInfo;
 </script>
 
-<div id={seedIn.id} class="seed" style="background-color: {seedIn.color?seedIn.color:"yellow"};">
-    <h1>{seedIn.name}</h1>
+<div id={seed.id} class="seed" style="background-color: {seed.color?seed.color:"yellow"};">
+    <h1>{seed.name}</h1>
 </div>
 
 <style>
