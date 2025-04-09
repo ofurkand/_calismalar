@@ -1,6 +1,7 @@
 <script lang="ts">
     import { initialSeeds } from "../../data/seeds";
     import Seed from "./Seed.svelte";
+    
     export function accessToSeedsMarket() {
     //     let allSeeds: seed[] = $state([
     //         { id: "1", name: 'Gül', growthRate:1,initialAge:0},
@@ -19,32 +20,32 @@
     //   initialAge:number, // 0
     // }
 
-    function add(seed:seed){
-        allSeeds.push(seed);
-        return true
-    }
+    // function add(seed:seed){
+    //     allSeeds.push(seed);
+    //     return true
+    // }
 
-    function update(seed:seed){
-        allSeeds = allSeeds.map(k => k.id === seed.id ? seed : k);
+    // function update(seed:seed){
+    //     allSeeds = allSeeds.map(k => k.id === seed.id ? seed : k);
 
-    // allSeeds = allSeeds.filter(k => k.id !== seed.id);
-    // allSeeds.push(seed)
+    // // allSeeds = allSeeds.filter(k => k.id !== seed.id);
+    // // allSeeds.push(seed)
 
-    // allSeeds.splice(seed.id);
-        return true
-    }
+    // // allSeeds.splice(seed.id);
+    //     return true
+    // }
 
-    function remove(seedID:string){
-    // allSeeds.splice(seedID);
-        allSeeds = allSeeds.filter(k => k.id !== seedID);  
-        return true
-    }
+    // function remove(seedID:string){
+    // // allSeeds.splice(seedID);
+    //     allSeeds = allSeeds.filter(k => k.id !== seedID);  
+    //     return true
+    // }
 
     return {
         allSeeds,
-        add,
-        update,
-        remove
+        // add,
+        // update,
+        // remove
     }
 }
     // import { seeds } from "$lib/class/seeds.svelte";

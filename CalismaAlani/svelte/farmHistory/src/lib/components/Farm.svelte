@@ -1,8 +1,11 @@
 <script>
 
     import Seeds from "./Seeds.svelte";
+    import Time from "./Time.svelte";
 
 </script>
+
+<Time/>
 
 <div class="farm" style="margin-top: 50px;">
     <Seeds/>
